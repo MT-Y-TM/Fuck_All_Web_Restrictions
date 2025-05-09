@@ -26,11 +26,5 @@
       "unlockContext": true,
       "unlockOverlay": false
     },
-    {
-      "domain": ".*",
-      "unlockSelectCopy": true,
-      "unlockContext": true,
-      "unlockOverlay": false
-    }
   ]
 }
