@@ -2,25 +2,29 @@
   "rules": [
     {
       "domain": "\\.baidu\\.com$",
-      "forceUnlockAll": true
+      "forceUnlockAll": true,
+      "unlockOverlayPro": false
     },
     {
       "domain": "\\.csdn\\.net$",
-      "forceUnlockAll": true
+      "forceUnlockAll": true,
+      "unlockOverlayPro": false
     },
     {
       "domain": "\\.bilibili\\.com$",
       "unlockSelect": true,
       "unlockCopy": true,
       "unlockContext": false,
-      "unlockOverlay": false
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
     },
     {
       "domain": "\\.nicovideo\\.com$",
       "unlockSelect": false,
       "unlockCopy": false,
       "unlockContext": true,
-      "unlockOverlay": false
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
     }
   ]
 }
