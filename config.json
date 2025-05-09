@@ -25,6 +25,14 @@
       "unlockContext": true,
       "unlockOverlay": false,
       "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.youtube\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": false,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
     }
   ]
 }
