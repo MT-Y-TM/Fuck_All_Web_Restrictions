@@ -9,20 +9,16 @@
       "forceUnlockAll": true
     },
     {
-      "domain": "(^|\\.)example\\.com$",
-      "unlockSelectCopy": false,
-      "unlockContext": true,
-      "unlockOverlay": true
-    },
-    {
       "domain": "\\.bilibili\\.com$",
-      "unlockSelectCopy": true,
+      "unlockSelect": true,
+      "unlockCopy": true,
       "unlockContext": false,
       "unlockOverlay": false
     },
     {
       "domain": "\\.nicovideo\\.com$",
-      "unlockSelectCopy": false,
+      "unlockSelect": false,
+      "unlockCopy": false,
       "unlockContext": true,
       "unlockOverlay": false
     }
