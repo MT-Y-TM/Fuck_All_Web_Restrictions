@@ -1,2 +1,39 @@
-# Fuck_All_Web_Restrictions
-🚫 全面解除网页限制：选中、复制、右键等统统搞定 | Unlock selection, copy, right-click and more — fuck all web restrictions.
+# Fuck\_All\_Web\_Restrictions
+
+解除网页上的选中、复制、右键等常见限制，让你彻底摆脱“只读网页”的束缚。
+
+本仓库用于**存放该油猴脚本的配置文件**，并欢迎大家**提出意见、补充更多网站的配置规则**。
+
+## 🔥 简介
+
+这是一个油猴脚本（Tampermonkey/Greasemonkey），旨在**全局解除网页中常见的前端限制操作**，例如：
+
+* 禁止选中
+* 禁止复制
+* 禁止右键菜单
+* 页面层遮罩
+
+该脚本适用于大多数通过 JavaScript 实现“反用户操作”的网页，让你重新掌控浏览器的使用权。
+
+## 📦 安装地址
+
+点击下方链接，在 Greasy Fork 上安装此脚本：
+
+👉 [https://greasyfork.org/zh-CN/scripts/535372](https://greasyfork.org/zh-CN/scripts/535372)
+
+## 🛠 使用说明
+
+1. 安装 [Tampermonkey 插件](https://www.tampermonkey.net/)（或兼容的用户脚本管理器）。
+2. 打开上方链接并点击“安装此脚本”。
+3. 自动生效，无需手动配置。刷新网页即可体验自由！（也可以自行手动配置，定制化你的配置）
+
+## ✅ 支持站点
+
+* 绝大多数使用 JS 限制操作的中文/英文网站（理论上其他语言也可以）
+* 不断适配中，欢迎反馈！
+
+## ❤️ 致谢
+
+如果这个脚本对你有帮助，欢迎 Star ⭐ 仓库或在 Greasy Fork 上给予评价支持！
+
+---
