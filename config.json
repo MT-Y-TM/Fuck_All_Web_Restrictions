@@ -30,7 +30,7 @@
       "domain": ".*",
       "unlockSelectCopy": true,
       "unlockContext": true,
-      "unlockOverlay": true
+      "unlockOverlay": false
     }
   ]
 }
