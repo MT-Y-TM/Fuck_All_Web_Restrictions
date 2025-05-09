@@ -12,7 +12,7 @@
     },
     {
       "domain": "\\.bilibili\\.com$",
-      "unlockSelect": true,
+      "unlockSelect": false,
       "unlockCopy": true,
       "unlockContext": false,
       "unlockOverlay": false,
