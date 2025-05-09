@@ -34,7 +34,7 @@
       "unlockOverlay": false,
       "unlockOverlayPro": false
     },
-    // 国内常用视频网站（按B站配置）
+    {"// 国内常用视频网站（按B站配置）"},
     {
       "domain": "\\.youku\\.com$",
       "unlockSelect": false,
@@ -107,7 +107,7 @@
       "unlockOverlay": false,
       "unlockOverlayPro": false
     },
-    // 国外常用视频网站（按B站配置）
+    {"// 国内常用视频网站（按B站配置）"},
     {
       "domain": "\\.netflix\\.com$",
       "unlockSelect": false,
