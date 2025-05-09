@@ -1,10 +1,8 @@
 {
   "rules": [
     {
-      "domain": "wenku\\.baidu\\.com$",
-      "unlockSelectCopy": true,
-      "unlockContext": true,
-      "unlockOverlay": true
+      "domain": "\\.baidu\\.com$",
+      "forceUnlockAll": true
     },
     {
       "domain": "(^|\\.)example\\.com$",
