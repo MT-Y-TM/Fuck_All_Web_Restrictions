@@ -33,6 +33,192 @@
       "unlockContext": false,
       "unlockOverlay": false,
       "unlockOverlayPro": false
+    },
+    // 国内常用视频网站（按B站配置）
+    {
+      "domain": "\\.youku\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.v\\.qq\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.iqiyi\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.mgtv\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.le\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.acfun\\.cn$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.pptv\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.sohu\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.migu\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    // 国外常用视频网站（按B站配置）
+    {
+      "domain": "\\.netflix\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.hulu\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.primevideo\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.disneyplus\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.hbomax\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.tv\\.apple\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.vimeo\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.dailymotion\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.crunchyroll\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.vk\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.rutube\\.ru$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.allocine\\.fr$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.viki\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
+    },
+    {
+      "domain": "\\.crackle\\.com$",
+      "unlockSelect": false,
+      "unlockCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false
     }
   ]
 }
