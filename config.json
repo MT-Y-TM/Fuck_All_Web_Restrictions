@@ -5,6 +5,10 @@
       "forceUnlockAll": true
     },
     {
+      "domain": "\\.csdn\\.net$",
+      "forceUnlockAll": true
+    },
+    {
       "domain": "(^|\\.)example\\.com$",
       "unlockSelectCopy": false,
       "unlockContext": true,
