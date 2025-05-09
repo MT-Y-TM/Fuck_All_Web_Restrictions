@@ -5,7 +5,7 @@
       "unlockSelectCopy": true,
       "unlockContext": true,
       "unlockOverlay": true
-    }，
+    },
     {
       "domain": "(^|\\.)example\\.com$",
       "unlockSelectCopy": false,
