@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "domain": "(^|\\.)example\\.com$",
+      "unlockSelectCopy": false,
+      "unlockContext": true,
+      "unlockOverlay": true
+    },
+    {
+      "domain": "\\.bilibili\\.com$",
+      "unlockSelectCopy": true,
+      "unlockContext": false,
+      "unlockOverlay": false
+    },
+    {
+      "domain": "\\.nicovideo\\.com$",
+      "unlockSelectCopy": false,
+      "unlockContext": true,
+      "unlockOverlay": false
+    },
+    {
+      "domain": ".*",
+      "unlockSelectCopy": true,
+      "unlockContext": true,
+      "unlockOverlay": true
+    }
+  ]
+}
