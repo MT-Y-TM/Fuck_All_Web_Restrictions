@@ -298,6 +298,69 @@
      {
       "domain": "\\.chatglm\\.cn$",
       "unlockOff": true
+     },
+     {
+       "comment": "主要云服务器提供商 (全部禁用解除限制)"
+     },
+     {
+       "domain": "\\.aws\\.amazon\\.com$",
+       "unlockOff": true
+     },
+     {
+       "domain": "\\.console\\.aws\\.amazon\\.com$",
+       "unlockOff": true
+     },
+     {
+       "domain": "\\.cloud\\.google\\.com$",
+       "unlockOff": true
+     },
+     {
+       "domain": "\\.console\\.cloud\\.google\\.com$",
+       "unlockOff": true
+     },
+     {
+       "domain": "\\.azure\\.microsoft\\.com$",
+       "unlockOff": true
+     },
+     {
+       "domain": "\\.portal\\.azure\\.com$",
+       "unlockOff": true
+     },
+     {
+       "domain": "\\.digitalocean\\.com$",
+       "unlockOff": true
+     },
+     {
+       "domain": "\\.cloud\\.digitalocean\\.com$",
+       "unlockOff": true
+     },
+     {
+       "domain": "\\.linode\\.com$",
+       "unlockOff": true
+     },
+     {
+       "domain": "\\.cloud\\.linode\\.com$",
+       "unlockOff": true
+     },
+     {
+       "domain": "\\.vultr\\.com$",
+       "unlockOff": true
+     },
+     {
+       "domain": "\\.my\\.vultr\\.com$",
+       "unlockOff": true
+     },
+     {
+       "domain": "\\.aliyun\\.com$",
+       "unlockOff": true
+     },
+      {
+       "domain": "\\.tencentcloud\\.com$",
+       "unlockOff": true
+     },
+      {
+       "domain": "\\.huaweicloud\\.com$",
+       "unlockOff": true
      }
   ]
 }
