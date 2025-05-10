@@ -268,7 +268,7 @@
     },
      {"// 主要中国 AI 网站 (全部禁用解除限制)"},
      {
-      "domain": "\\.qianwen\\.aliyun\\.com$", // 修正通义千问的域名
+      "domain": "\\.tongyi\\.aliyun\\.com$", 
       "unlockOff": true
      },
      {
