@@ -254,7 +254,13 @@
     },
     {
       "domain": "\\.gemini\\.google\\.com$",
-      "unlockOff": true
+      "unlockSelect": false,
+      "unlockCopy": false,
+      "unlockContext": false,
+      "unlockOverlay": false,
+      "unlockOverlayPro": false,
+      "unlockOff": false
+    },
     },
     {
       "domain": "\\.copilot\\.microsoft\\.com$",
