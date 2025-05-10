@@ -32,7 +32,9 @@
       "domain": "\\.youtube\\.com$",
       "unlockOff": true
     },
-    {"// 国内常用视频网站（按B站配置）"},
+    {
+      "comment": "国内常用视频网站（按B站配置）"
+    },
     {
       "domain": "\\.youku\\.com$",
       "unlockSelect": false,
@@ -114,7 +116,9 @@
       "unlockOverlayPro": false,
       "unlockOff": false
     },
-    {"// 国外常用视频网站"},
+    {
+      "comment": "国外常用视频网站"
+    },
     {
       "domain": "\\.netflix\\.com$",
       "unlockSelect": false,
@@ -241,7 +245,9 @@
       "unlockOverlayPro": false,
       "unlockOff": false
     },
-    {"// 主要国外 AI 网站 (全部禁用解除限制)"},
+    {
+      "comment": "主要国外 AI 网站 (全部禁用解除限制)"
+    },
     {
       "domain": "\\.chatgpt\\.com$",
       "unlockOff": true
@@ -266,9 +272,11 @@
       "domain": "\\.phind\\.com$",
       "unlockOff": true
     },
-     {"// 主要中国 AI 网站 (全部禁用解除限制)"},
+    {
+      "comment": "主要中国 AI 网站 (全部禁用解除限制)"
+    },
      {
-      "domain": "\\.tongyi\\.aliyun\\.com$", 
+      "domain": "\\.tongyi.com$",
       "unlockOff": true
      },
      {
