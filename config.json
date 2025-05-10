@@ -261,7 +261,6 @@
       "unlockOverlayPro": false,
       "unlockOff": false
     },
-    },
     {
       "domain": "\\.copilot\\.microsoft\\.com$",
       "unlockOff": true
