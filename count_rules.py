@@ -1,7 +1,7 @@
 import json
 import sys
 import os
-import requests
+import requests # 需要这个库来下载历史文件
 import datetime
 
 import matplotlib.pyplot as plt
@@ -30,7 +30,9 @@ output_json_path = os.path.join(output_dir, output_json_filename)
 history_filename = "count_history.json"
 history_output_path = os.path.join(output_dir, history_filename)
 chart_image_filename = "domain_rules_trend.png"
-chart_image_path = os.path.join(output_dir, chart_image_path)
+# <--- 修正：删除重复且错误的下一行 --->
+chart_image_path = os.path.join(output_dir, chart_image_filename)
+
 
 # GitHub Pages 上历史文件的原始 URL (用于下载现有历史)
 github_username = "MT-Y-TM" # 请确保这里是你的 GitHub 用户名
@@ -58,7 +60,8 @@ try:
             # 检查当前规则元素是否是字典，并且是否包含 "domain" 这个键
             if isinstance(rule, dict) and "domain" in rule:
                 count += 1
-    # else: print(...) # 已移除 (最后的统计总数打印)
+        # print(...) # 已移除 (最后的统计总数打印)
+    # else: # print(...) # 已移除 (警告信息)
     # 如果路径未找到，计数仍然是 0 (无需额外的 else 块来设置 count=0)
 
 
@@ -123,7 +126,7 @@ try:
 
                 # 绘制线图 (使用中性粉色主题颜色)
                 line_color = '#F06292' # Material Design Pink 300
-                ax.plot(dates, counts_list, marker='o', linestyle='-', color=line_color)
+                ax.plot(dates, counts_list, marker='o', linestyle='-', color=line_color) # <--- 保持颜色设置为 #F06292
 
 
                 # <--- 修改文字/字体颜色和设置文本 --->
@@ -171,6 +174,9 @@ try:
                           if min_count < 0 and ax.get_ylim()[0] > min_count * 1.1:
                                ax.set_ylim(min_count * 1.1, ax.get_ylim()[1])
 
+
+                # 确保输出目录存在 (上面已检查过)
+                # os.makedirs(output_dir, exist_ok=True)
                 # 保存图表为图片文件
                 plt.savefig(chart_image_path)
 
