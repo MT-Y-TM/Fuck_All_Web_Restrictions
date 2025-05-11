@@ -8,13 +8,11 @@ import datetime
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.dates as mdates
+from matplotlib import font_manager # <--- 新增导入：用于字体管理
 
 # <--- 配置 Matplotlib 支持中文和指定字体 --->
-# 尝试设置支持中文的字体列表，会按顺序查找系统中是否存在
-# 'Arial Unicode MS' 是一个常见的跨平台中文字体
-# 'Noto Sans CJK SC', 'WenQuanYi Zen Hei' 是 Ubuntu 等 Linux 系统中常见的开源中文字体
-# 如果系统中没有这些字体，可能会回退到默认字体，导致中文显示为方块
-plt.rcParams['font.sans-serif'] = ['Arial Unicode MS', 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', 'sans-serif']
+# 我们将下载一个字体文件并在运行时加载它，所以先注释掉基于系统字体的设置
+# plt.rcParams['font.sans-serif'] = ['Arial Unicode MS', 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', 'sans-serif']
 plt.rcParams['axes.unicode_minus'] = False # 解决负号'-'显示为方块的问题
 
 # 获取输入JSON文件路径 (预计为 config.json)
@@ -41,8 +39,46 @@ github_username = "MT-Y-TM" # 请确保这里是你的 GitHub 用户名
 repo_name = "Fuck_All_Web_Restrictions" # 请确保这里是你的仓库名
 history_raw_url = f"https://raw.githubusercontent.com/{github_username}/{repo_name}/gh-pages/{history_filename}"
 
+# <--- 字体下载相关的定义 --->
+# Google Noto Sans SC Regular 字体文件的一个原始 URL 示例
+# 注意：这个 URL 需要能够直接下载文件
+font_url = "https://github.com/googlefonts/noto-cjk/raw/main/Sans/OTF/SimplifiedChinese/NotoSansSC-Regular.otf"
+font_local_filename = "NotoSansSC-Regular.otf"
+font_local_path = os.path.join(output_dir, font_local_filename) # 将字体文件保存在输出目录中
+
 
 try:
+    # 确保输出目录存在 (在下载字体前创建)
+    os.makedirs(output_dir, exist_ok=True)
+
+    # <--- 下载字体文件 --->
+    print(f"Attempting to download font from: {font_url}")
+    try:
+        font_response = requests.get(font_url, stream=True)
+        font_response.raise_for_status() # 如果下载失败 (非 2xx 状态码)，抛出 HTTPError
+        with open(font_local_path, 'wb') as f:
+            for chunk in font_response.iter_content(chunk_size=8192):
+                f.write(chunk)
+        print(f"Successfully downloaded font to: {font_local_path}")
+
+        # <--- 将字体添加到 Matplotlib 的字体管理器并设置 --->
+        # 这使得 Matplotlib 可以通过字体家族名称找到并使用这个字体
+        font_manager.fontManager.addfont(font_local_path)
+        # 获取字体属性，以便找到 Matplotlib 注册的精确字体家族名称
+        font_properties = font_manager.FontProperties(fname=font_local_path)
+        font_family_name = font_properties.get_name()
+        print(f"Font '{font_family_name}' added to font manager.")
+
+        # 设置 Matplotlib 使用这个字体家族
+        plt.rcParams['font.family'] = font_family_name
+        print(f"Matplotlib font set to '{font_family_name}'.")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading font file: {e}", file=sys.stderr)
+        print("Chinese characters may not display correctly.", file=sys.stderr)
+        # 继续执行，但没有下载到字体，中文可能仍是方块
+
+
     # 读取输入 JSON 文件
     print(f"Attempting to read JSON file from: {input_json_path}")
     with open(input_json_path, 'r', encoding='utf-8') as f:
@@ -125,33 +161,33 @@ try:
             fig, ax = plt.subplots(figsize=(10, 5))
 
             # <--- 应用颜色和绘制线图 --->
-            # 使用 Material Design 中性粉色主题的一个颜色示例 (#F06292)
-            # 你可以在 Material Design Color Palette (https://materialui.co/colors 或 https://material.io/design/color/the-color-system.html) 中选择其他颜色
-            line_color = '#F06292' # Pink 300
+            line_color = '#F06292' # Material Design Pink 300
             ax.plot(dates, counts_list, marker='o', linestyle='-', color=line_color)
 
             # <--- 格式化 X 轴为年月日 --->
             ax.xaxis.set_major_locator(mdates.AutoDateLocator())
-            date_form = mdates.DateFormatter('%Y-%m-%d') # <--- 修改日期格式
+            date_form = mdates.DateFormatter('%Y-%m-%d')
             ax.xaxis.set_major_formatter(date_form)
 
             # <--- 设置标题和轴标签 (使用中文) --->
-            # 这里的中文标题和标签需要 Matplotlib 字体支持才能正确显示
+            # 这些中文文本应该会使用上面加载的字体来显示
             plt.xlabel('时间')
             plt.ylabel('规则数量')
-            plt.title('规则历史数量统计') # <--- 修改标题
+            plt.title('规则历史数量统计') # 设置标题
             plt.grid(True)
             plt.xticks(rotation=45, ha='right')
             plt.tight_layout()
 
             # <--- Y 轴刻度尝试显示整数 --->
-            ax.yaxis.get_major_locator().set_params(integer=True) # 强制主刻度为整数
-            # ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True)) # 另一种设置整数刻度的方法
-
-            # 确保输出目录存在
-            os.makedirs(output_dir, exist_ok=True)
+            ax.yaxis.get_major_locator().set_params(integer=True)
+            # 调整 Y 轴范围，确保 0 在内，并且最高点上方留有空间
+            if counts_list:
+                 max_count = max(counts_list)
+                 ax.set_ylim(0, max_count * 1.1 + (5 if max_count < 10 else max_count * 0.1)) # 确保包含 0，并留出空间
 
             # 保存图表为图片文件
+            # 确保输出目录存在 (在上面已经创建过一次，这里再检查一下以防万一)
+            os.makedirs(output_dir, exist_ok=True)
             plt.savefig(chart_image_path)
             print(f"Chart image saved to: {chart_image_path}")
 
