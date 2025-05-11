@@ -6,8 +6,8 @@ on:
       - main # 当 main 分支有新的 push 时触发
     paths:
       - 'config.json' # 当 config.json 有变化时触发
-      - 'count_rules.py' # 当脚本有变化时触发
-      - 'chart_template.html' # <--- 新增：当图表模板有变化时触发 (可选)
+      - 'count_rules.py' # <--- 修改：当脚本有变化时触发
+      # - 'chart_template.html' # <--- 移除：不再需要这个模板文件了
   schedule:
     - cron: '0 */2 * * *' # 每两小时更新一次 UTC 时间
 
@@ -26,22 +26,23 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Install dependencies # <--- 修改这里：安装 requests 库
+    - name: Install dependencies # <--- 修改这里：安装 requests 和 matplotlib 库
       run: |
         python -m pip install --upgrade pip
-        pip install requests
+        pip install requests matplotlib numpy
 
-    - name: Run script to count rules, log history, and generate chart page
+    - name: Run script to count rules, log history, and generate chart image
       # 运行你的 Python 脚本
+      # 脚本会输出 badge json, history json, 和 chart image 到 badge_data 目录
       run: python count_rules.py config.json
 
-    - name: Deploy badge data, history, and chart page to gh-pages
+    - name: Deploy badge data, history, and chart image to gh-pages
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        # publish_dir 指向脚本输出的目录，现在包含了 badge json, history json 和 chart html
+        # publish_dir 指向脚本输出的目录，现在包含了 badge json, history json 和 chart image
         publish_dir: badge_data # <--- 这个目录名称和脚本中的一致
         publish_branch: gh-pages
         # cname: your-domain.com # 如果你的 GitHub Pages 使用了自定义域名，取消注释并替换
         # destination_dir: / # 默认就是发布到 gh-pages 分支的根目录
-        title: Update domain rules count, history, and chart # 修改 commit 标题
+        title: Update domain rules count, history, and chart image # 修改 commit 标题
