@@ -1,6 +1,7 @@
 # Fuck_All_Web_Restrictions
 ## 去他妈的网页限制！（官方译名）
 ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmt-y-tm.github.io%2FFuck_All_Web_Restrictions%2Fdomain_count_data.json&query=%24.message&label=%E7%8E%B0%E6%9C%89%E8%A7%84%E5%88%99%E6%95%B0%E9%87%8F&labelColor=%24.color)
+**本项目的规则历史数量记录图表（每两小时更新）**
 ![Domain Rules Trend Chart](https://mt-y-tm.github.io/Fuck_All_Web_Restrictions/domain_rules_trend.png)
 
 解除网页上的选中、复制、右键等常见限制，让你彻底摆脱“只读网页”的束缚。
