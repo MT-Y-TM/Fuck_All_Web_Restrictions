@@ -1,7 +1,7 @@
 import json
 import sys
 import os
-import requests # 需要这个库来下载历史文件
+import requests
 import datetime
 
 import matplotlib.pyplot as plt
@@ -30,9 +30,7 @@ output_json_path = os.path.join(output_dir, output_json_filename)
 history_filename = "count_history.json"
 history_output_path = os.path.join(output_dir, history_filename)
 chart_image_filename = "domain_rules_trend.png"
-# <--- 修正：删除重复且错误的下一行 --->
-chart_image_path = os.path.join(output_dir, chart_image_filename)
-
+chart_image_path = os.path.join(output_dir, chart_image_path)
 
 # GitHub Pages 上历史文件的原始 URL (用于下载现有历史)
 github_username = "MT-Y-TM" # 请确保这里是你的 GitHub 用户名
@@ -60,8 +58,7 @@ try:
             # 检查当前规则元素是否是字典，并且是否包含 "domain" 这个键
             if isinstance(rule, dict) and "domain" in rule:
                 count += 1
-        # print(...) # 已移除 (最后的统计总数打印)
-    # else: # print(...) # 已移除 (警告信息)
+    # else: print(...) # 已移除 (最后的统计总数打印)
     # 如果路径未找到，计数仍然是 0 (无需额外的 else 块来设置 count=0)
 
 
@@ -101,38 +98,60 @@ try:
 
 
     # 生成图表图片 (保留逻辑，移除调试打印)
-    # print("Generating chart image using Matplotlib...") # 已移除
     try:
         # 检查是否有足够的数据点来绘制图表 (至少一个点)
         if not history_data:
-             # print("Not enough data points to generate chart. Skipping chart generation.") # 已移除
              pass # 跳过绘图如果历史数据为空
         else:
             dates = [datetime.datetime.fromisoformat(entry['date']) for entry in history_data]
             counts_list = [entry['count'] for entry in history_data]
 
             # 实际绘图只需要至少一个点
-            if not dates: # 这个检查和上面的 history_data 非空检查重复，保留一个即可
-                 # print("Not enough data points to generate chart. Skipping chart generation.") # 已移除
+            if not dates:
                  pass
             else: # 只有当 dates 非空时才进行绘图
                 fig, ax = plt.subplots(figsize=(10, 5))
 
-                # 绘制线图 (使用默认蓝色)
-                ax.plot(dates, counts_list, marker='o', linestyle='-', color='b')
+                # <--- 修改背景颜色 --->
+                # Material Design Pink 50 (非常浅的粉色)
+                fig_bg_color = '#FCE4EC'
+                # Material Design White (保持坐标系背景白色以提高对比度)
+                axes_bg_color = '#FFFFFF'
+                fig.patch.set_facecolor(fig_bg_color)
+                ax.patch.set_facecolor(axes_bg_color)
+
+
+                # 绘制线图 (使用中性粉色主题颜色)
+                line_color = '#F06292' # Material Design Pink 300
+                ax.plot(dates, counts_list, marker='o', linestyle='-', color=line_color)
+
+
+                # <--- 修改文字/字体颜色和设置文本 --->
+                # Material Design Grey 800 (深灰色，可读性好)
+                text_color = '#424242'
+
+                # 设置标题和轴标签 (使用英文文本，并设置颜色)
+                plt.xlabel('Time', color=text_color)
+                plt.ylabel('Rules Count', color=text_color)
+                plt.title('Domain Rules History Count', color=text_color)
+                # 设置刻度标签的颜色
+                ax.tick_params(axis='x', colors=text_color)
+                ax.tick_params(axis='y', colors=text_color)
+
+
+                # <--- 修改网格线颜色 --->
+                grid_color = '#e0e0e0' # Material Design Grey 300 (浅灰色)
+                ax.grid(True, color=grid_color) # 显示网格线并设置颜色
+
 
                 # 格式化 X 轴为年月日
                 ax.xaxis.set_major_locator(mdates.AutoDateLocator())
                 date_form = mdates.DateFormatter('%Y-%m-%d')
                 ax.xaxis.set_major_formatter(date_form)
 
-                # 设置标题和轴标签 (使用英文文本)
-                plt.xlabel('Time')
-                plt.ylabel('Rules Count')
-                plt.title('Domain Rules History Count')
-                plt.grid(True)
+                # 旋转 X 轴标签
                 plt.xticks(rotation=45, ha='right')
-                plt.tight_layout()
+                plt.tight_layout() # 自动调整布局
 
                 # Y 轴刻度尝试显示整数
                 ax.yaxis.get_major_locator().set_params(integer=True)
@@ -152,12 +171,8 @@ try:
                           if min_count < 0 and ax.get_ylim()[0] > min_count * 1.1:
                                ax.set_ylim(min_count * 1.1, ax.get_ylim()[1])
 
-
-                # 确保输出目录存在 (上面已检查过)
-                # os.makedirs(output_dir, exist_ok=True)
                 # 保存图表为图片文件
                 plt.savefig(chart_image_path)
-                # print(f"Chart image saved to: {chart_image_path}") # 已移除
 
                 plt.close(fig) # 关闭图表
 
@@ -171,26 +186,21 @@ try:
     # 确保输出目录存在 (防止前面绘图失败导致目录未创建)
     os.makedirs(output_dir, exist_ok=True)
 
-
     # 写入徽章数据 (保留逻辑)
-    # print(f"Writing badge data to: {output_json_path}") # 已移除
     with open(output_json_path, 'w', encoding='utf-8') as f:
         json.dump(badge_data, f, indent=2, ensure_ascii=False)
 
     # 写入历史数据 (保留逻辑)
-    # print(f"Writing history data to: {history_output_path}") # 已移除
     with open(history_output_path, 'w', encoding='utf-8') as f:
         json.dump(history_data, f, indent=2, ensure_ascii=False)
 
-    # print("Script finished successfully.") # 已移除
-
 
 except FileNotFoundError as e:
-    print(f"Error: Required file not found: {e}", file=sys.stderr) # 保留错误打印
+    print(f"Error: Required file not found: {e}", file=sys.stderr)
     sys.exit(1)
 except json.JSONDecodeError:
-    print(f"Error: Could not decode JSON from {input_json_path}. Check JSON syntax.", file=sys.stderr) # 保留错误打印
+    print(f"Error: Could not decode JSON from {input_json_path}. Check JSON syntax.", file=sys.stderr)
     sys.exit(1)
 except Exception as e:
-    print(f"An unexpected error occurred: {e}", file=sys.stderr) # 保留错误打印
+    print(f"An unexpected error occurred: {e}", file=sys.stderr)
     sys.exit(1)
