@@ -298,6 +298,10 @@
        {
         "domain": "\\.chatglm\\.cn$",
         "unlockOff": true
-       }
+       },
+        {
+        "domain": "\\.limestart\\.cn$",
+        "unlockOff": true
+        }
     ]
   }
