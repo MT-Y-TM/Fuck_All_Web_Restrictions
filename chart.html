@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Domain Rules Trend</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        #chart-container {
+            width: 90%; /* 图表容器宽度 */
+            max-width: 800px; /* 最大宽度 */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        canvas {
+            width: 100% !important; /* 使 Canvas 宽度充满容器 */
+            height: auto !important; /* 高度自适应 */
+        }
+    </style>
+</head>
+<body>
+<div id="chart-container">
+    <canvas id="rulesTrendChart"></canvas>
+</div>
+
+<script>
+    // 历史数据文件的路径，相对于 chart.html 所在的目录 (gh-pages 根目录)
+    const historyUrl = 'count_history.json';
+
+    fetch(historyUrl)
+        .then(response => {
+            // 如果文件不存在 (404)，说明是第一次运行或历史被清空，返回空数组
+            if (response.status === 404) {
+                console.warn("History file not found, starting with empty data.");
+                return [];
+            }
+             // 如果请求不成功，抛出错误
+            if (!response.ok) {
+                 throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            // 解析 JSON
+            return response.json();
+        })
+        .then(historyData => {
+            // 确保获取到的是一个数组
+            if (!Array.isArray(historyData)) {
+                console.error("History data is not an array:", historyData);
+                historyData = []; // 如果数据格式错误，使用空数据
+            }
+
+            // 按日期对数据进行排序 (确保时间轴正确)
+            historyData.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            // 准备图表数据
+            // 使用 toLocaleString 格式化日期，使其更易读
+            const labels = historyData.map(item => new Date(item.date).toLocaleString());
+            const counts = historyData.map(item => item.count);
+
+            // 获取 canvas 元素并创建图表
+            const ctx = document.getElementById('rulesTrendChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line', // 线形图
+                data: {
+                    labels: labels, // X 轴标签 (日期/时间)
+                    datasets: [{
+                        label: 'Domain Rules Count', // 数据集的标签
+                        data: counts, // Y 轴数据 (数量)
+                        borderColor: 'rgb(75, 192, 192)', // 线颜色
+                        tension: 0.1, // 线的弯曲度
+                        fill: false, // 不填充线下面积
+                        pointRadius: 5, // 数据点的大小
+                        pointHoverRadius: 8 // 鼠标悬停时数据点的大小
+                    }]
+                },
+                options: {
+                    responsive: true, // 使图表具有响应性
+                    maintainAspectRatio: false, // 允许根据容器大小自由调整比例
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: '时间' // X 轴标题
+                            },
+                             // 如果时间点很多，可以考虑隐藏部分标签
+                             ticks: {
+                                 autoSkip: true,
+                                 maxTicksLimit: 10 // 最多显示多少个 X 轴刻度
+                             }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: '规则数量' // Y 轴标题
+                            },
+                            beginAtZero: true, // Y 轴从 0 开始
+                             // 确保 Y 轴刻度是整数 (如果数量是整数)
+                             ticks: {
+                                 stepSize: 1, // 步长为 1
+                                 callback: function(value) { if (value % 1 === 0) { return value; } }
+                             }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true // 显示图例
+                        },
+                        tooltip: {
+                            enabled: true, // 启用工具提示
+                            callbacks: {
+                                title: function(context) {
+                                    // 格式化工具提示的日期标题
+                                    if (context.length > 0) {
+                                        return new Date(historyData[context[0].dataIndex].date).toLocaleString();
+                                    }
+                                    return '';
+                                },
+                                label: function(context) {
+                                    // 格式化工具提示的数据标签
+                                    return '数量: ' + context.raw;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error loading or processing history data:', error);
+            // 在页面上显示错误信息
+            document.getElementById('chart-container').innerHTML = '<p>加载图表数据出错。</p>' + error;
+        });
+</script>
+</body>
+</html>
