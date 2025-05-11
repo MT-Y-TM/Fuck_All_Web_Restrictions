@@ -5,10 +5,17 @@ import requests
 import datetime
 # import pytz # 如果需要精确的北京时间戳，请取消注释并安装 pytz
 
-# <--- 新增 Matplotlib 相关的导入 --->
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.dates as mdates
+
+# <--- 配置 Matplotlib 支持中文和指定字体 --->
+# 尝试设置支持中文的字体列表，会按顺序查找系统中是否存在
+# 'Arial Unicode MS' 是一个常见的跨平台中文字体
+# 'Noto Sans CJK SC', 'WenQuanYi Zen Hei' 是 Ubuntu 等 Linux 系统中常见的开源中文字体
+# 如果系统中没有这些字体，可能会回退到默认字体，导致中文显示为方块
+plt.rcParams['font.sans-serif'] = ['Arial Unicode MS', 'Noto Sans CJK SC', 'WenQuanYi Zen Hei', 'sans-serif']
+plt.rcParams['axes.unicode_minus'] = False # 解决负号'-'显示为方块的问题
 
 # 获取输入JSON文件路径 (预计为 config.json)
 if len(sys.argv) < 2:
@@ -22,16 +29,16 @@ output_dir = "badge_data"
 output_json_filename = "domain_count_data.json"
 output_json_path = os.path.join(output_dir, output_json_filename)
 
-# <--- 新增/修改历史数据文件和图表图片相关的定义 --->
+# 历史数据文件和图表图片文件名
 history_filename = "count_history.json"
 history_output_path = os.path.join(output_dir, history_filename)
-chart_image_filename = "domain_rules_trend.png" # <--- 输出的图片文件名
+chart_image_filename = "domain_rules_trend.png"
 chart_image_path = os.path.join(output_dir, chart_image_filename)
 
 
 # GitHub Pages 上历史文件的原始 URL (用于下载现有历史)
-github_username = "MT-Y-TM"
-repo_name = "Fuck_All_Web_Restrictions"
+github_username = "MT-Y-TM" # 请确保这里是你的 GitHub 用户名
+repo_name = "Fuck_All_Web_Restrictions" # 请确保这里是你的仓库名
 history_raw_url = f"https://raw.githubusercontent.com/{github_username}/{repo_name}/gh-pages/{history_filename}"
 
 
@@ -41,7 +48,7 @@ try:
     with open(input_json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    # --- 调试: 输出读取到的 JSON 内容 (可以选择性注释掉以减少日志量) ---
+    # --- 调试: 输出读取到的 JSON 内容 ---
     # print("\n--- Successfully loaded JSON content ---")
     # print(json.dumps(data, indent=2, ensure_ascii=False))
     # print("------------------------------------\n")
@@ -56,7 +63,6 @@ try:
         for i, rule in enumerate(rules_list):
             if isinstance(rule, dict) and "domain" in rule:
                 count += 1
-                # print(f" - Rule {i}: Found 'domain' key. Current total count: {count}") # 调试输出
 
         print(f"Finished counting. Total 'domain' rules count: {count}")
     else:
@@ -99,14 +105,13 @@ try:
     print(f"Adding new history entry: {new_history_entry}")
 
     # 将新条目追加到历史数据列表 (检查是否重复)
-    # 避免短时间内重复记录相同数量
     if not history_data or history_data[-1].get("count") != count:
          history_data.append(new_history_entry)
          print("New entry added to history.")
     else:
          print("Count has not changed. Skipping adding new history entry.")
 
-    # <--- 新增：使用 Matplotlib 生成图表 --->
+    # <--- 使用 Matplotlib 生成图表 --->
     print("Generating chart image using Matplotlib...")
     try:
         # 提取日期和数量
@@ -117,21 +122,31 @@ try:
         if len(dates) < 1:
             print("Not enough data points to generate chart. Skipping chart generation.")
         else:
-            fig, ax = plt.subplots(figsize=(10, 5)) # 设置图表大小
+            fig, ax = plt.subplots(figsize=(10, 5))
 
-            ax.plot(dates, counts_list, marker='o', linestyle='-', color='b') # 绘制线形图
+            # <--- 应用颜色和绘制线图 --->
+            # 使用 Material Design 中性粉色主题的一个颜色示例 (#F06292)
+            # 你可以在 Material Design Color Palette (https://materialui.co/colors 或 https://material.io/design/color/the-color-system.html) 中选择其他颜色
+            line_color = '#F06292' # Pink 300
+            ax.plot(dates, counts_list, marker='o', linestyle='-', color=line_color)
 
-            # 格式化 X 轴为日期
-            ax.xaxis.set_major_locator(mdates.AutoDateLocator()) # 自动选择日期刻度位置
-            ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d %H:%M')) # 格式化日期显示
+            # <--- 格式化 X 轴为年月日 --->
+            ax.xaxis.set_major_locator(mdates.AutoDateLocator())
+            date_form = mdates.DateFormatter('%Y-%m-%d') # <--- 修改日期格式
+            ax.xaxis.set_major_formatter(date_form)
 
-            plt.xlabel('时间') # X 轴标签
-            plt.ylabel('规则数量') # Y 轴标签
-            plt.title('Domain Rules Trend') # 图表标题
-            plt.grid(True) # 显示网格线
-            plt.xticks(rotation=45, ha='right') # 旋转日期标签，避免重叠
-            plt.tight_layout() # 自动调整布局，防止标签被裁切
-            plt.yticks(np.arange(0, max(counts_list) * 1.1 + 5, max(1, int(max(counts_list) * 1.1 + 5) / 10))) # <--- 尝试生成整数刻度，根据最大值调整步长
+            # <--- 设置标题和轴标签 (使用中文) --->
+            # 这里的中文标题和标签需要 Matplotlib 字体支持才能正确显示
+            plt.xlabel('时间')
+            plt.ylabel('规则数量')
+            plt.title('规则历史数量统计') # <--- 修改标题
+            plt.grid(True)
+            plt.xticks(rotation=45, ha='right')
+            plt.tight_layout()
+
+            # <--- Y 轴刻度尝试显示整数 --->
+            ax.yaxis.get_major_locator().set_params(integer=True) # 强制主刻度为整数
+            # ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True)) # 另一种设置整数刻度的方法
 
             # 确保输出目录存在
             os.makedirs(output_dir, exist_ok=True)
@@ -146,7 +161,7 @@ try:
          print(f"Warning: Could not generate chart image: {e}", file=sys.stderr)
 
 
-    # 确保输出目录存在 (再次检查，以防上面图表生成因为没有数据跳过而没创建目录)
+    # 确保输出目录存在 (再次检查)
     os.makedirs(output_dir, exist_ok=True)
 
     # 将徽章数据写入 JSON 文件到指定目录
@@ -158,8 +173,6 @@ try:
     print(f"Writing history data to: {history_output_path}")
     with open(history_output_path, 'w', encoding='utf-8') as f:
         json.dump(history_data, f, indent=2, ensure_ascii=False)
-
-    # <--- chart_template.html 不再需要生成或复制 --->
 
     print("Script finished successfully.")
 
