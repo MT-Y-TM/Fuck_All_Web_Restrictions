@@ -302,6 +302,11 @@
         {
         "domain": "\\.limestart\\.cn$",
         "unlockOff": true
+        },
+        {
+          "domain": "\\.github\\.com$",
+          "unlockOff": true,
+          "comment": "禁用对 GitHub 的解除限制"
         }
     ]
   }
