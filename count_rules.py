@@ -33,7 +33,6 @@ try:
     # 检查根是否是字典，并且包含 'rules' 键，且 'rules' 的值是列表
 if isinstance(data, dict) and 'rules' in data and isinstance(data['rules'], list):
     rules_list = data['rules']
-    …
 else:
     print("Warning: Could not find the expected 'rules' list…", file=sys.stderr)
 
