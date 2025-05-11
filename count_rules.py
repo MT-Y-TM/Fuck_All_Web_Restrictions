@@ -40,7 +40,7 @@ try:
     # 准备 Shields.io 徽章数据
     badge_data = {
         "schemaVersion": 1,
-        "label": "Domain Rules",
+        "label": "现有规则数量",
         "message": str(count),
         "color": "blue"
     }
