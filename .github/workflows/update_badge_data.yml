@@ -12,6 +12,9 @@ on:
 
   workflow_dispatch: # 允许手动触发 (可选)
 
+permissions:
+  contents: write # 只授予对仓库内容的写入权限
+  
 jobs:
   update_data:
     runs-on: ubuntu-latest
