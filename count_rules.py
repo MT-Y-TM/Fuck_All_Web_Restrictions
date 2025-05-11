@@ -60,8 +60,7 @@ try:
             # 检查当前规则元素是否是字典，并且是否包含 "domain" 这个键
             if isinstance(rule, dict) and "domain" in rule:
                 count += 1
-        # print(...) # 已移除 (最后的统计总数打印)
-    # else: # print(...) # 已移除 (警告信息)
+    # else: print(...) # 已移除 (最后的统计总数打印)
     # 如果路径未找到，计数仍然是 0 (无需额外的 else 块来设置 count=0)
 
 
@@ -115,35 +114,32 @@ try:
             else: # 只有当 dates 非空时才进行绘图
                 fig, ax = plt.subplots(figsize=(10, 5))
 
-                # <--- 修改背景颜色 --->
-                # Material Design Pink 50 (非常浅的粉色)
-                fig_bg_color = '#FCE4EC'
-                # Material Design White (保持坐标系背景白色以提高对比度)
-                axes_bg_color = '#FFFFFF'
+                # 修改背景颜色
+                fig_bg_color = '#FCE4EC' # Material Design Pink 50
+                axes_bg_color = '#FFFFFF' # Keep axes background white
                 fig.patch.set_facecolor(fig_bg_color)
                 ax.patch.set_facecolor(axes_bg_color)
 
 
                 # 绘制线图 (使用中性粉色主题颜色)
                 line_color = '#F06292' # Material Design Pink 300
-                ax.plot(dates, counts_list, marker='o', linestyle='-', color=line_color) # <--- 保持颜色设置为 #F06292
+                ax.plot(dates, counts_list, marker='o', linestyle='-', color=line_color)
 
 
-                # <--- 修改文字/字体颜色和设置文本 --->
-                # Material Design Grey 800 (深灰色，可读性好)
-                text_color = '#424242'
+                # <--- 修改文字/字体颜色和设置文本 (加粗) --->
+                text_color = '#424242' # Material Design Grey 800
 
-                # 设置标题和轴标签 (使用英文文本，并设置颜色)
-                plt.xlabel('Time', color=text_color)
-                plt.ylabel('Rules Count', color=text_color)
-                plt.title('Domain Rules History Count', color=text_color)
-                # 设置刻度标签的颜色
+                # 设置标题和轴标签 (加粗并设置颜色)
+                plt.xlabel('Time', color=text_color, fontweight='bold') # <--- 加粗 X 轴标签
+                plt.ylabel('Rules Count', color=text_color, fontweight='bold') # <--- 加粗 Y 轴标签
+                plt.title('Domain Rules History Count', color=text_color, fontweight='bold') # <--- 加粗标题
+                # 设置刻度标签的颜色 (刻度标签通常不加粗)
                 ax.tick_params(axis='x', colors=text_color)
                 ax.tick_params(axis='y', colors=text_color)
 
 
-                # <--- 修改网格线颜色 --->
-                grid_color = '#e0e0e0' # Material Design Grey 300 (浅灰色)
+                # 修改网格线颜色
+                grid_color = '#e0e0e0' # Material Design Grey 300
                 ax.grid(True, color=grid_color) # 显示网格线并设置颜色
 
 
