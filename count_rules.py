@@ -31,9 +31,11 @@ try:
     count = 0
     # <--- 修改这里的路径检查和访问 --->
     # 检查根是否是字典，并且包含 'rules' 键，且 'rules' 的值是列表
-    if isinstance(data, dict) and 'rules' in data and isinstance(data['rules'], list):
-        rules_list = data['rules'] # <--- 直接访问 data['rules']
-        print(f"Found 'rules' list with {len(rules_list)} total rules. Counting rules with 'domain' key.") # <--- 调试输出，修正打印信息
+if isinstance(data, dict) and 'rules' in data and isinstance(data['rules'], list):
+    rules_list = data['rules']
+    …
+else:
+    print("Warning: Could not find the expected 'rules' list…", file=sys.stderr)
 
         for i, rule in enumerate(rules_list):
             # 检查当前规则元素是否是字典，并且是否包含 "domain" 这个键
