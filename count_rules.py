@@ -1,10 +1,14 @@
 import json
 import sys
 import os
-import requests # <--- 新增导入
-import datetime # <--- 新增导入
-# 如果你想确保时间戳是北京时间，可以安装 pytz 并导入
-# import pytz
+import requests
+import datetime
+# import pytz # 如果需要精确的北京时间戳，请取消注释并安装 pytz
+
+# <--- 新增 Matplotlib 相关的导入 --->
+import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.dates as mdates
 
 # 获取输入JSON文件路径 (预计为 config.json)
 if len(sys.argv) < 2:
@@ -18,19 +22,16 @@ output_dir = "badge_data"
 output_json_filename = "domain_count_data.json"
 output_json_path = os.path.join(output_dir, output_json_filename)
 
-# <--- 新增历史数据文件和图表文件相关的定义 --->
+# <--- 新增/修改历史数据文件和图表图片相关的定义 --->
 history_filename = "count_history.json"
 history_output_path = os.path.join(output_dir, history_filename)
-chart_template_filename = "chart_template.html" # 需要在主分支创建这个模板文件
-chart_output_filename = "chart.html"
-chart_output_path = os.path.join(output_dir, chart_output_filename)
+chart_image_filename = "domain_rules_trend.png" # <--- 输出的图片文件名
+chart_image_path = os.path.join(output_dir, chart_image_filename)
+
 
 # GitHub Pages 上历史文件的原始 URL (用于下载现有历史)
-# 请替换 <your-github-username> 和 <your-repo-name>
-# 这里我直接用你的仓库信息了
 github_username = "MT-Y-TM"
 repo_name = "Fuck_All_Web_Restrictions"
-# 注意这里是 gh-pages 分支的 raw 文件 URL
 history_raw_url = f"https://raw.githubusercontent.com/{github_username}/{repo_name}/gh-pages/{history_filename}"
 
 
@@ -40,11 +41,10 @@ try:
     with open(input_json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    # --- 调试: 输出读取到的 JSON 内容 ---
-    print("\n--- Successfully loaded JSON content ---")
-    # print(json.dumps(data, indent=2, ensure_ascii=False)) # 完整输出可能过长，先注释掉
-    print(f"Loaded JSON with keys: {list(data.keys())[:5]}...") # 打印部分键名 instead
-    print("------------------------------------\n")
+    # --- 调试: 输出读取到的 JSON 内容 (可以选择性注释掉以减少日志量) ---
+    # print("\n--- Successfully loaded JSON content ---")
+    # print(json.dumps(data, indent=2, ensure_ascii=False))
+    # print("------------------------------------\n")
     # --- 调试结束 ---
 
     # 统计 rules 列表中包含 "domain" 键的字典数量 (方案 A)
@@ -71,61 +71,82 @@ try:
         "color": "blue"
     }
 
-    # <--- 新增：处理历史数据 --->
+    # <--- 处理历史数据 --->
     history_data = []
-    # 尝试从 GitHub Pages 下载现有的历史文件
     print(f"Attempting to download history from: {history_raw_url}")
     try:
         response = requests.get(history_raw_url)
-        response.raise_for_status() # 如果下载失败 (非 2xx 状态码)，抛出 HTTPError
+        response.raise_for_status()
         history_data = response.json()
         print("Successfully downloaded existing history.")
         if not isinstance(history_data, list):
             print(f"Warning: Downloaded history is not a list (type: {type(history_data)}). Starting with empty history.", file=sys.stderr)
-            history_data = [] # 如果下载的数据格式不对，重置为空列表
+            history_data = []
     except requests.exceptions.RequestException as e:
-        # 404 错误表示文件不存在，这是第一次运行或分支刚创建时的正常情况
         if isinstance(e, requests.exceptions.HTTPError) and e.response.status_code == 404:
             print("History file not found (404). Starting with empty history.")
             history_data = []
         else:
-            # 其他下载错误，打印警告但不中断流程
             print(f"Warning: Could not download existing history file: {e}", file=sys.stderr)
             history_data = []
 
-    # 获取当前 UTC 时间戳 (Actions 默认用 UTC)
+    # 获取当前 UTC 时间戳
     now_utc = datetime.datetime.now(datetime.UTC)
     timestamp = now_utc.isoformat()
-    # 如果你想用北京时间作为记录的时间戳，需要额外处理和安装 pytz
-    # beijing_tz = pytz.timezone('Asia/Shanghai')
-    # now_bjt = datetime.datetime.now(beijing_tz)
-    # timestamp = now_bjt.isoformat() # ISO 格式包含时区信息
 
     # 创建新的历史记录条目
     new_history_entry = {"date": timestamp, "count": count}
     print(f"Adding new history entry: {new_history_entry}")
 
-    # 将新条目追加到历史数据列表 (可选：检查是否重复，避免短时间内重复记录)
-    # 简单的检查：如果最新一条记录的时间和数量与当前一致，可能跳过追加
+    # 将新条目追加到历史数据列表 (检查是否重复)
+    # 避免短时间内重复记录相同数量
     if not history_data or history_data[-1].get("count") != count:
          history_data.append(new_history_entry)
          print("New entry added to history.")
     else:
          print("Count has not changed. Skipping adding new history entry.")
 
-
-    # <--- 新增：生成图表 HTML 文件 --->
-    print(f"Attempting to read chart template from: {chart_template_filename}")
+    # <--- 新增：使用 Matplotlib 生成图表 --->
+    print("Generating chart image using Matplotlib...")
     try:
-        with open(chart_template_filename, 'r', encoding='utf-8') as f:
-            chart_template_content = f.read()
-        print("Successfully read chart template.")
-    except FileNotFoundError:
-        print(f"Error: Chart template file not found at {chart_template_filename}. Cannot generate chart page.", file=sys.stderr)
-        chart_template_content = "<h1>Error: Chart template not found!</h1>" # 提供一个错误提示内容
+        # 提取日期和数量
+        dates = [datetime.datetime.fromisoformat(entry['date']) for entry in history_data]
+        counts_list = [entry['count'] for entry in history_data]
+
+        # 如果没有数据点，不生成图表
+        if len(dates) < 1:
+            print("Not enough data points to generate chart. Skipping chart generation.")
+        else:
+            fig, ax = plt.subplots(figsize=(10, 5)) # 设置图表大小
+
+            ax.plot(dates, counts_list, marker='o', linestyle='-', color='b') # 绘制线形图
+
+            # 格式化 X 轴为日期
+            ax.xaxis.set_major_locator(mdates.AutoDateLocator()) # 自动选择日期刻度位置
+            ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d %H:%M')) # 格式化日期显示
+
+            plt.xlabel('时间') # X 轴标签
+            plt.ylabel('规则数量') # Y 轴标签
+            plt.title('Domain Rules Trend') # 图表标题
+            plt.grid(True) # 显示网格线
+            plt.xticks(rotation=45, ha='right') # 旋转日期标签，避免重叠
+            plt.tight_layout() # 自动调整布局，防止标签被裁切
+            plt.yticks(np.arange(0, max(counts_list) * 1.1 + 5, max(1, int(max(counts_list) * 1.1 + 5) / 10))) # <--- 尝试生成整数刻度，根据最大值调整步长
+
+            # 确保输出目录存在
+            os.makedirs(output_dir, exist_ok=True)
+
+            # 保存图表为图片文件
+            plt.savefig(chart_image_path)
+            print(f"Chart image saved to: {chart_image_path}")
+
+            plt.close(fig) # 关闭图表，释放内存
+
+    except Exception as e:
+         print(f"Warning: Could not generate chart image: {e}", file=sys.stderr)
 
 
-    # 确保输出目录存在
+    # 确保输出目录存在 (再次检查，以防上面图表生成因为没有数据跳过而没创建目录)
     os.makedirs(output_dir, exist_ok=True)
 
     # 将徽章数据写入 JSON 文件到指定目录
@@ -138,16 +159,13 @@ try:
     with open(history_output_path, 'w', encoding='utf-8') as f:
         json.dump(history_data, f, indent=2, ensure_ascii=False)
 
-    # 将图表 HTML 内容写入文件到指定目录
-    print(f"Writing chart page to: {chart_output_path}")
-    with open(chart_output_path, 'w', encoding='utf-8') as f:
-        f.write(chart_template_content) # 图表数据通过 JS 动态加载，所以直接写模板内容
+    # <--- chart_template.html 不再需要生成或复制 --->
 
     print("Script finished successfully.")
 
 except FileNotFoundError as e:
     print(f"Error: Required file not found: {e}", file=sys.stderr)
-    sys.exit(1) # 脚本出错时退出，让 Action 失败
+    sys.exit(1)
 except json.JSONDecodeError:
     print(f"Error: Could not decode JSON from {input_json_path}. Check JSON syntax.", file=sys.stderr)
     sys.exit(1)
