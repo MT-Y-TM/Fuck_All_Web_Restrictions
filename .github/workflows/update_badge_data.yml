@@ -6,42 +6,37 @@ on:
       - main # 当 main 分支有新的 push 时触发
     paths:
       - 'config.json' # <-- 指定你的 JSON 文件路径，只在该文件变化时触发 (优化)
-  # 确保即使文件不变也能定期更新徽章 (每两小时一次)
   schedule:
-    # cron 表达式：0 */2 * * *
-    # 分钟：0 (每小时的第 0 分钟)
-    # 小时：*/2 (每隔 2 小时)
-    # 日期/月份/星期：* * * (每天都运行)
-    # 这个时间是 UTC。相当于北京时间每两小时运行一次，但起始时间会是 UTC 的 0、2、4...点对应的北京时间 (即北京时间 08:00, 10:00, 12:00... 的循环)。
-    - cron: '0 */2 * * *'
+    - cron: '0 */2 * * *' # 每两小时更新一次 UTC 时间
 
   workflow_dispatch: # 允许手动触发 (可选)
 
 jobs:
   update_data:
-    runs-on: ubuntu-latest # 在最新的 Ubuntu 环境上运行
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4 # 检出你的仓库代码，config.json 就在其中
+      uses: actions/checkout@v4
 
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.x' # 使用 Python 3.x
+        python-version: '3.x'
 
     - name: Run script to count rules and generate badge data
       # 运行你的 Python 脚本
       # config.json 就在仓库根目录，所以直接传递文件名作为参数
+      # 脚本会在当前目录下创建 badge_data 文件夹并将输出文件放在里面
       run: python count_rules.py config.json
 
     - name: Deploy badge data to gh-pages
       # 使用 peaceiris/actions-gh-pages 将生成的数据文件发布到 gh-pages 分支
       uses: peaceiris/actions-gh-pages@v4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }} # 使用 GitHub 自动提供的 token
-        publish_dir: . # 指定需要发布到 gh-pages 的目录 (脚本输出文件在当前目录)
-        publish_branch: gh-pages # 发布到 gh-pages 分支
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: badge_data # <--- 修改这里：指定只发布 badge_data 目录的内容
+        publish_branch: gh-pages
         # cname: your-domain.com # 如果你的 GitHub Pages 使用了自定义域名，取消注释并替换
-        # destination_dir: badge # 可选：发布到 gh-pages 分支下的 badge 目录
-        title: 检查了一次当前仓库的规则数量 # 可选的 commit 标题
+        # destination_dir: badge # 如果你希望在 gh-pages 分支下再创建一个子目录，可以将这里设置为 '/' 或其他名称
+        title: 检查了一次当前仓库的规则数量
