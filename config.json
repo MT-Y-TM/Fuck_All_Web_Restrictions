@@ -1,322 +1,327 @@
 {
     "rules": [
-      {
-        "domain": "\\.baidu\\.com$",
-        "unlockOff": true
-      },
-      {
-        "domain": "\\.csdn\\.net$",
-        "forceUnlockAll": true,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.bilibili\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.nicovideo\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": false,
-        "unlockContext": true,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.youtube\\.com$",
-        "unlockOff": true
-      },
-      {
-        "comment": "国内常用视频网站（按B站配置）"
-      },
-      {
-        "domain": "\\.youku\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.v\\.qq\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.iqiyi\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.mgtv\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.le\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.acfun\\.cn$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.pptv\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.sohu\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.migu\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "comment": "国外常用视频网站"
-      },
-      {
-        "domain": "\\.netflix\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.hulu\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.primevideo\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.disneyplus\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.hbomax\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.tv\\.apple\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.vimeo\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.dailymotion\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.crunchyroll\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.vk\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.rutube\\.ru$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.allocine\\.fr$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.viki\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "domain": "\\.crackle\\.com$",
-        "unlockSelect": false,
-        "unlockCopy": true,
-        "unlockContext": false,
-        "unlockOverlay": false,
-        "unlockOverlayPro": false,
-        "unlockOff": false
-      },
-      {
-        "comment": "主要国外 AI 网站 (全部禁用解除限制)"
-      },
-      {
-        "domain": "\\.chatgpt\\.com$",
-        "unlockOff": true
-      },
-      {
-        "domain": "^gemini\\.google\\.com$",
-        "unlockOff": true
-      },
-      {
-        "domain": "\\.copilot\\.microsoft\\.com$",
-        "unlockOff": true
-      },
-      {
-        "domain": "\\.claude\\.ai$",
-        "unlockOff": true
-      },
-      {
-        "domain": "\\.perplexity\\.ai$",
-        "unlockOff": true
-      },
-      {
-        "domain": "\\.phind\\.com$",
-        "unlockOff": true
-      },
-      {
-        "comment": "主要中国 AI 网站 (全部禁用解除限制)"
-      },
-       {
-        "domain": "\\.tongyi.com$",
-        "unlockOff": true
-       },
-       {
-        "domain": "\\.hunyuan\\.tencent\\.com$",
-        "unlockOff": true
-       },
-       {
-        "domain": "\\.xinghuo\\.xfyun\\.cn$",
-        "unlockOff": true
-       },
-       {
-        "domain": "\\.kimi\\.moonshot\\.cn$",
-        "unlockOff": true
-       },
-       {
-        "domain": "\\.doubao\\.com$",
-        "unlockOff": true
-       },
-       {
-        "domain": "\\.chatglm\\.cn$",
-        "unlockOff": true
-       },
         {
-        "domain": "\\.limestart\\.cn$",
-        "unlockOff": true
+            "domain": "\\.baidu\\.com$",
+            "unlockOff": true
         },
         {
-          "domain": "^github\\.com$",
-          "unlockOff": true,
-          "comment": "禁用对 GitHub 的解除限制"
+            "domain": "\\.csdn\\.net$",
+            "forceUnlockAll": true,
+            "unlockOverlayPro": false,
+            "unlockOff": false
         },
-          {
-    "domain": "www\\.miyoushe\\.com$", 
-    "unlockOff": true, 
-    "comment": "米游社主站禁用规则"
-  },
-  {
-    "domain": "act\\.mihoyo\\.com$", 
-    "unlockOff": true, 
-    "comment": "米哈游活动页禁用规则"
-  }
+        {
+            "domain": "\\.bilibili\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.nicovideo\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": false,
+            "unlockContext": true,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.youtube\\.com$",
+            "unlockOff": true
+        },
+        {
+            "comment": "国内常用视频网站（按B站配置）"
+        },
+        {
+            "domain": "\\.youku\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.v\\.qq\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.iqiyi\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.mgtv\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.le\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.acfun\\.cn$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.pptv\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.sohu\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.migu\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "comment": "国外常用视频网站"
+        },
+        {
+            "domain": "\\.netflix\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.hulu\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.primevideo\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.disneyplus\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.hbomax\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.tv\\.apple\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.vimeo\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.dailymotion\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.crunchyroll\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.vk\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.rutube\\.ru$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.allocine\\.fr$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.viki\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "domain": "\\.crackle\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false
+        },
+        {
+            "comment": "主要国外 AI 网站 (全部禁用解除限制)"
+        },
+        {
+            "domain": "\\.chatgpt\\.com$",
+            "unlockOff": true
+        },
+        {
+            "domain": "^gemini\\.google\\.com$",
+            "unlockOff": true
+        },
+        {
+            "domain": "\\.copilot\\.microsoft\\.com$",
+            "unlockOff": true
+        },
+        {
+            "domain": "\\.claude\\.ai$",
+            "unlockOff": true
+        },
+        {
+            "domain": "\\.perplexity\\.ai$",
+            "unlockOff": true
+        },
+        {
+            "domain": "\\.phind\\.com$",
+            "unlockOff": true
+        },
+        {
+            "comment": "主要中国 AI 网站 (全部禁用解除限制)"
+        },
+        {
+            "domain": "\\.tongyi.com$",
+            "unlockOff": true
+        },
+        {
+            "domain": "\\.hunyuan\\.tencent\\.com$",
+            "unlockOff": true
+        },
+        {
+            "domain": "\\.xinghuo\\.xfyun\\.cn$",
+            "unlockOff": true
+        },
+        {
+            "domain": "\\.kimi\\.moonshot\\.cn$",
+            "unlockOff": true
+        },
+        {
+            "domain": "\\.doubao\\.com$",
+            "unlockOff": true
+        },
+        {
+            "domain": "\\.chatglm\\.cn$",
+            "unlockOff": true
+        },
+        {
+            "domain": "\\.limestart\\.cn$",
+            "unlockOff": true
+        },
+        {
+            "domain": "^github\\.com$",
+            "unlockOff": true,
+            "comment": "禁用对 GitHub 的解除限制"
+        },
+        {
+            "domain": "www\\.miyoushe\\.com$",
+            "unlockOff": true,
+            "comment": "米游社主站禁用规则"
+        },
+        {
+            "domain": "act\\.mihoyo\\.com$",
+            "unlockOff": true,
+            "comment": "米哈游活动页禁用规则"
+        },
+        {
+            "domain": "www\\.kaggle\\.com$",
+            "unlockOff": true,
+            "comment": "Kaggle Notebook 禁用规则"
+        }
     ]
-  }
+}
