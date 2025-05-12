@@ -327,6 +327,11 @@
             "domain": "\\.greasyfork\\.org$",
             "unlockOff": true,
             "comment": "Greasy Fork 禁用规则"
+        },
+        {
+            "domain": "\\.aplayer.cc$",
+            "unlockOff": true,
+            "comment": "星橙影视 禁用规则"
         }
     ]
 }
