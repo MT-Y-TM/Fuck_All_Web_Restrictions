@@ -3,11 +3,11 @@ import sys
 import os
 import requests # 需要这个库来下载历史文件
 import datetime
+import pytz # 导入 pytz 库
 
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.dates as mdates
-import pytz
 # from matplotlib import font_manager # 字体管理器，当前方案不需要手动管理字体
 
 
@@ -43,6 +43,8 @@ history_raw_url = f"https://raw.githubusercontent.com/{github_username}/{repo_na
 # <--- 移除字体下载相关的定义和 try/except 块 --->
 # 所有字体下载相关的变量定义和整个 try/except 代码块都已移除
 
+# 定义北京时区
+beijing_tz = pytz.timezone('Asia/Shanghai')
 
 try:
     # 确保输出目录存在 (在保存文件前创建)
@@ -89,8 +91,10 @@ try:
             print(f"Warning: Could not download existing history file: {e}", file=sys.stderr)
             history_data = []
 
-    # 获取当前 UTC 时间戳
+    # 获取当前 UTC 时间戳 (这里保持获取 UTC 时间，方便存储和处理)
     now_utc = datetime.datetime.now(datetime.UTC)
+    # 将 UTC 时间保存为 ISO 格式，包含时区信息 'Z' (代表 UTC) 或 '+00:00'
+    # fromisoformat 可以正确解析
     timestamp = now_utc.isoformat()
     new_history_entry = {"date": timestamp, "count": count}
 
@@ -106,13 +110,17 @@ try:
         if not history_data:
              pass # 跳过绘图如果历史数据为空
         else:
-            dates = [datetime.datetime.fromisoformat(entry['date']) for entry in history_data]
+            # 解析 UTC 时间戳并转换为 UTC 感知的 datetime 对象
+            utc_dates = [datetime.datetime.fromisoformat(entry['date']) for entry in history_data]
             counts_list = [entry['count'] for entry in history_data]
 
+            # 将 UTC 时间转换为北京时间用于绘图
+            beijing_dates = [utc_date.astimezone(beijing_tz) for utc_date in utc_dates]
+
             # 实际绘图只需要至少一个点
-            if not dates:
+            if not beijing_dates: # 使用转换后的日期列表进行检查
                  pass
-            else: # 只有当 dates 非空时才进行绘图
+            else: # 只有当 beijing_dates 非空时才进行绘图
                 fig, ax = plt.subplots(figsize=(10, 5))
 
                 # 修改背景颜色
@@ -124,14 +132,15 @@ try:
 
                 # 绘制线图 (使用中性粉色主题颜色)
                 line_color = '#F06292' # Material Design Pink 300
-                ax.plot(dates, counts_list, marker='o', linestyle='-', color=line_color)
+                # 使用转换后的北京时间进行绘图
+                ax.plot(beijing_dates, counts_list, marker='o', linestyle='-', color=line_color)
 
 
                 # <--- 修改文字/字体颜色和设置文本 (加粗) --->
                 text_color = '#424242' # Material Design Grey 800
 
                 # 设置标题和轴标签 (加粗并设置颜色)
-                plt.xlabel('Time', color=text_color, fontweight='bold') # <--- 加粗 X 轴标签
+                plt.xlabel('Time (Beijing Time)', color=text_color, fontweight='bold') # <--- 修改 X 轴标签，注明北京时间
                 plt.ylabel('Rules Count', color=text_color, fontweight='bold') # <--- 加粗 Y 轴标签
                 plt.title('Domain Rules History Count', color=text_color, fontweight='bold') # <--- 加粗标题
                 # 设置刻度标签的颜色 (刻度标签通常不加粗)
@@ -143,10 +152,9 @@ try:
                 grid_color = '#e0e0e0' # Material Design Grey 300
                 ax.grid(True, color=grid_color) # 显示网格线并设置颜色
 
-
-                # 格式化 X 轴为年月日
+                # 格式化 X 轴为年月日 (使用 mdates，它能处理带时区的时间对象)
                 ax.xaxis.set_major_locator(mdates.AutoDateLocator())
-                date_form = mdates.DateFormatter('%Y-%m-%d')
+                date_form = mdates.DateFormatter('%Y-%m-%d %H:%M') # 格式化包含小时分钟，更精确显示北京时间
                 ax.xaxis.set_major_formatter(date_form)
 
                 # 旋转 X 轴标签
@@ -176,8 +184,19 @@ try:
                 # os.makedirs(output_dir, exist_ok=True)
                 # 保存图表为图片文件
                 plt.savefig(chart_image_path)
+plt.close(fig) # 关闭图表
 
-                plt.close(fig) # 关闭图表
+
+    except Exception as e:
+         # 保留绘图失败时的警告，但不影响脚本流程
+         print(f"Warning: Could not generate chart image: {e}", file=sys.stderr)
+         pass
+
+# 确保输出目录存在 (上面已检查过)
+                # os.makedirs(output_dir, exist_ok=True)
+                # 保存图表为图片文件
+                plt.savefig(chart_image_path)
+plt.close(fig) # 关闭图表
 
 
     except Exception as e:
