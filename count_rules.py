@@ -138,9 +138,9 @@ try:
                 ax.plot(dates, counts_list, marker='o', linestyle='-', color=line_color)
 
                 text_color = '#424242' # Material Design Grey 800
-                plt.xlabel('时间', color=text_color, fontweight='bold') # 加粗 X 轴标签
-                plt.ylabel('规则数量', color=text_color, fontweight='bold') # 加粗 Y 轴标签
-                plt.title('Domain 规则数量趋势', color=text_color, fontweight='bold') # 加粗标题
+                plt.xlabel('Time', color=text_color, fontweight='bold') # 加粗 X 轴标签
+                plt.ylabel('Rules Count', color=text_color, fontweight='bold') # 加粗 Y 轴标签
+                plt.title('Domain Rules History Count', color=text_color, fontweight='bold') # 加粗标题
                 ax.tick_params(axis='x', colors=text_color) # 设置刻度标签颜色
                 ax.tick_params(axis='y', colors=text_color)
 
