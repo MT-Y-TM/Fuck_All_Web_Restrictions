@@ -1,108 +1,209 @@
 import json
-import requests
+import sys
+import os
+import requests # 需要这个库来下载历史文件
+import datetime
+
 import matplotlib.pyplot as plt
 import numpy as np
-from datetime import datetime
+import matplotlib.dates as mdates
 import pytz
-import os
-import sys
-from collections import defaultdict
+# from matplotlib import font_manager # 字体管理器，当前方案不需要手动管理字体
 
-def get_rule_count(url):
-    response = requests.get(url)
-    response.raise_for_status()
-    lines = response.text.splitlines()
-    count = sum(1 for line in lines if line.strip() and not line.strip().startswith(('#', '!')))
-    return count
 
-def load_config(config_file):
-    with open(config_file, 'r', encoding='utf-8') as f:
-        return json.load(f)
+# <--- 配置 Matplotlib (简化版，移除中文特定设置) --->
+# 移除所有中文字体相关的 rcParams 设置
+plt.rcParams['axes.unicode_minus'] = False # 保留这个，解决负号'-'显示问题
 
-def save_json(data, file_path):
-    with open(file_path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
 
-def generate_chart(history_data, output_path):
-    plt.rcParams['font.family'] = ['SimHei']  # 使用中文字体（黑体）
-    plt.rcParams['axes.unicode_minus'] = False
+# 获取输入JSON文件路径 (预计为 config.json)
+if len(sys.argv) < 2:
+    print("Usage: python count_rules.py <path_to_config.json>", file=sys.stderr)
+    sys.exit(1)
 
-    timestamps = [entry["timestamp"] for entry in history_data]
-    domain_names = set()
-    for entry in history_data:
-        domain_names.update(entry["counts"].keys())
-    domain_names = sorted(domain_names)
+input_json_path = sys.argv[1]
 
-    x = np.arange(len(timestamps))
-    width = 0.1
-    fig, ax = plt.subplots(figsize=(10, 6))
+# 定义输出文件的目录和文件名
+output_dir = "badge_data"
+output_json_filename = "domain_count_data.json"
+output_json_path = os.path.join(output_dir, output_json_filename)
 
-    for i, domain in enumerate(domain_names):
-        y = [entry["counts"].get(domain, 0) for entry in history_data]
-        ax.bar(x + i * width, y, width, label=domain)
+history_filename = "count_history.json"
+history_output_path = os.path.join(output_dir, history_filename)
+chart_image_filename = "domain_rules_trend.png"
+# <--- 修正：删除重复且错误的下一行 --->
+chart_image_path = os.path.join(output_dir, chart_image_filename)
 
-    ax.set_xlabel("时间（北京时间）")
-    ax.set_ylabel("规则数量")
-    ax.set_title("各域名规则数量历史记录")
-    ax.set_xticks(x + width * len(domain_names) / 2)
-    ax.set_xticklabels(timestamps, rotation=45, ha='right')
-    ax.legend()
 
-    plt.tight_layout()
-    plt.savefig(output_path)
+# GitHub Pages 上历史文件的原始 URL (用于下载现有历史)
+github_username = "MT-Y-TM" # 请确保这里是你的 GitHub 用户名
+repo_name = "Fuck_All_Web_Restrictions" # 请确保这里是你的仓库名
+history_raw_url = f"https://raw.githubusercontent.com/{github_username}/{repo_name}/gh-pages/{history_filename}"
 
-def main():
-    config_file = sys.argv[1] if len(sys.argv) > 1 else 'config.json'
-    config = load_config(config_file)
+# <--- 移除字体下载相关的定义和 try/except 块 --->
+# 所有字体下载相关的变量定义和整个 try/except 代码块都已移除
 
-    # 使用 pytz 获取当前北京时间
-    tz = pytz.timezone("Asia/Shanghai")
-    now = datetime.now(tz)
-    timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
 
-    badge_data = {}
+try:
+    # 确保输出目录存在 (在保存文件前创建)
+    os.makedirs(output_dir, exist_ok=True)
+
+    # 读取输入 JSON 文件 (移除调试打印)
+    with open(input_json_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    # 统计 rules 列表中包含 "domain" 键的字典数量 (方案 A)
+    count = 0
+    # 检查根是否是字典，并且包含 'rules' 键，且 'rules' 的值是列表
+    if isinstance(data, dict) and 'rules' in data and isinstance(data['rules'], list):
+        rules_list = data['rules']
+        for i, rule in enumerate(rules_list):
+            # 检查当前规则元素是否是字典，并且是否包含 "domain" 这个键
+            if isinstance(rule, dict) and "domain" in rule:
+                count += 1
+    # else: print(...) # 已移除 (最后的统计总数打印)
+    # 如果路径未找到，计数仍然是 0 (无需额外的 else 块来设置 count=0)
+
+
+    # 准备 Shields.io 徽章数据 (保留逻辑)
+    badge_data = {
+        "schemaVersion": 1,
+        "label": "Domain Rules",
+        "message": str(count),
+        "color": "blue"
+    }
+
+    # 处理历史数据 (保留逻辑，移除调试打印)
     history_data = []
+    try:
+        response = requests.get(history_raw_url)
+        response.raise_for_status()
+        history_data = response.json()
+        if not isinstance(history_data, list):
+            history_data = []
+    except requests.exceptions.RequestException as e:
+        if isinstance(e, requests.exceptions.HTTPError) and e.response.status_code == 404:
+            history_data = []
+        else:
+            # 保留下载历史失败时的警告，但不影响流程
+            print(f"Warning: Could not download existing history file: {e}", file=sys.stderr)
+            history_data = []
 
-    badge_dir = "badge_data"
-    os.makedirs(badge_dir, exist_ok=True)
+    # 获取当前 UTC 时间戳
+    now_utc = datetime.datetime.now(datetime.UTC)
+    timestamp = now_utc.isoformat()
+    new_history_entry = {"date": timestamp, "count": count}
 
-    history_path = os.path.join(badge_dir, "history.json")
-    if os.path.exists(history_path):
-        with open(history_path, 'r', encoding='utf-8') as f:
-            history_data = json.load(f)
+    # 将新条目追加到历史数据列表 (检查是否重复)
+    if not history_data or history_data[-1].get("count") != count:
+         history_data.append(new_history_entry)
+    # else: print(...) # 已移除 (计数未改变提示)
 
-    counts = {}
-    for domain, url in config.items():
-        try:
-            count = get_rule_count(url)
-            counts[domain] = count
-            badge_data[domain] = {
-                "schemaVersion": 1,
-                "label": domain,
-                "message": str(count),
-                "color": "blue"
-            }
-        except Exception as e:
-            print(f"获取 {domain} 的规则数时出错: {e}")
 
-    # 记录当前数据点（含北京时间戳）
-    history_data.append({
-        "timestamp": timestamp,
-        "counts": counts
-    })
+    # 生成图表图片 (保留逻辑，移除调试打印)
+    try:
+        # 检查是否有足够的数据点来绘制图表 (至少一个点)
+        if not history_data:
+             pass # 跳过绘图如果历史数据为空
+        else:
+            dates = [datetime.datetime.fromisoformat(entry['date']) for entry in history_data]
+            counts_list = [entry['count'] for entry in history_data]
 
-    # 限制历史记录长度（可选）
-    # history_data = history_data[-100:]
+            # 实际绘图只需要至少一个点
+            if not dates:
+                 pass
+            else: # 只有当 dates 非空时才进行绘图
+                fig, ax = plt.subplots(figsize=(10, 5))
 
-    # 保存 badge json 和历史记录 json
-    for domain, data in badge_data.items():
-        save_json(data, os.path.join(badge_dir, f"{domain}.json"))
+                # 修改背景颜色
+                fig_bg_color = '#FCE4EC' # Material Design Pink 50
+                axes_bg_color = '#FFFFFF' # Keep axes background white
+                fig.patch.set_facecolor(fig_bg_color)
+                ax.patch.set_facecolor(axes_bg_color)
 
-    save_json(history_data, history_path)
 
-    # 生成图表
-    chart_path = os.path.join(badge_dir, "rule_counts_chart.png")
-    generate_chart(history_data, chart_path)
+                # 绘制线图 (使用中性粉色主题颜色)
+                line_color = '#F06292' # Material Design Pink 300
+                ax.plot(dates, counts_list, marker='o', linestyle='-', color=line_color)
 
-if __name__ == "__main__":
-    main()
+
+                # <--- 修改文字/字体颜色和设置文本 (加粗) --->
+                text_color = '#424242' # Material Design Grey 800
+
+                # 设置标题和轴标签 (加粗并设置颜色)
+                plt.xlabel('Time', color=text_color, fontweight='bold') # <--- 加粗 X 轴标签
+                plt.ylabel('Rules Count', color=text_color, fontweight='bold') # <--- 加粗 Y 轴标签
+                plt.title('Domain Rules History Count', color=text_color, fontweight='bold') # <--- 加粗标题
+                # 设置刻度标签的颜色 (刻度标签通常不加粗)
+                ax.tick_params(axis='x', colors=text_color)
+                ax.tick_params(axis='y', colors=text_color)
+
+
+                # 修改网格线颜色
+                grid_color = '#e0e0e0' # Material Design Grey 300
+                ax.grid(True, color=grid_color) # 显示网格线并设置颜色
+
+
+                # 格式化 X 轴为年月日
+                ax.xaxis.set_major_locator(mdates.AutoDateLocator())
+                date_form = mdates.DateFormatter('%Y-%m-%d')
+                ax.xaxis.set_major_formatter(date_form)
+
+                # 旋转 X 轴标签
+                plt.xticks(rotation=45, ha='right')
+                plt.tight_layout() # 自动调整布局
+
+                # Y 轴刻度尝试显示整数
+                ax.yaxis.get_major_locator().set_params(integer=True)
+                # 调整 Y 轴范围
+                if counts_list: # 确保 counts_list 非空
+                     max_count = max(counts_list)
+                     min_count = min(counts_list)
+                     # 如果所有值都相同，设置一个稍微大一点的范围
+                     if max_count == min_count:
+                         # 确保范围包含 0 (如果最小值 >= 0)
+                         ax.set_ylim(max(0, max_count - 5), max_count + 5)
+                         if max_count == 0: ax.set_ylim(-1, 10) # 特殊情况：如果都是 0
+                     else:
+                          # 标准范围从 0 到最大值 + 一点空间
+                          ax.set_ylim(0, max_count * 1.1) # 简化范围
+                          # 确保最小值不是负数时 Y 轴不显示负数
+                          if min_count < 0 and ax.get_ylim()[0] > min_count * 1.1:
+                               ax.set_ylim(min_count * 1.1, ax.get_ylim()[1])
+
+
+                # 确保输出目录存在 (上面已检查过)
+                # os.makedirs(output_dir, exist_ok=True)
+                # 保存图表为图片文件
+                plt.savefig(chart_image_path)
+
+                plt.close(fig) # 关闭图表
+
+
+    except Exception as e:
+         # 保留绘图失败时的警告，但不影响脚本流程
+         print(f"Warning: Could not generate chart image: {e}", file=sys.stderr)
+         pass
+
+
+    # 确保输出目录存在 (防止前面绘图失败导致目录未创建)
+    os.makedirs(output_dir, exist_ok=True)
+
+    # 写入徽章数据 (保留逻辑)
+    with open(output_json_path, 'w', encoding='utf-8') as f:
+        json.dump(badge_data, f, indent=2, ensure_ascii=False)
+
+    # 写入历史数据 (保留逻辑)
+    with open(history_output_path, 'w', encoding='utf-8') as f:
+        json.dump(history_data, f, indent=2, ensure_ascii=False)
+
+
+except FileNotFoundError as e:
+    print(f"Error: Required file not found: {e}", file=sys.stderr)
+    sys.exit(1)
+except json.JSONDecodeError:
+    print(f"Error: Could not decode JSON from {input_json_path}. Check JSON syntax.", file=sys.stderr)
+    sys.exit(1)
+except Exception as e:
+    print(f"An unexpected error occurred: {e}", file=sys.stderr)
+    sys.exit(1)
