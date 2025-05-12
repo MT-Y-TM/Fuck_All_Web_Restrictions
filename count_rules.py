@@ -149,7 +149,7 @@ try:
 
                 # 格式化 X 轴为年月日时分 (显示小时和分钟对于北京时间可能有用)
                 ax.xaxis.set_major_locator(mdates.AutoDateLocator())
-                date_form = mdates.DateFormatter('%Y-%m-%d %H:%M') # 添加了时分
+                date_form = mdates.DateFormatter('%Y-%m-%d %H:%M', tz=beijing_tz) # 添加了时分
                 ax.xaxis.set_major_formatter(date_form)
 
                 plt.xticks(rotation=45, ha='right') # 旋转 X 轴标签
