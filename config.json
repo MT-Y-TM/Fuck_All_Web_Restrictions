@@ -322,6 +322,11 @@
             "domain": "www\\.kaggle\\.com$",
             "unlockOff": true,
             "comment": "Kaggle Notebook 禁用规则"
+        },
+        {
+            "domain": "\\.greasyfork\\.org$",
+            "unlockOff": true
+            "comment": "Greasy Fork 禁用规则"
         }
     ]
 }
