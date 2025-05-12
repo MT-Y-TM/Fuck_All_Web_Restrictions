@@ -206,3 +206,5 @@ Tampermonkey 版本: v4.20
 
 * 历时开发大约25个小时，从零到现在的完成品，本脚本起源于第一次投稿的晚上的前一晚的十点钟，在 Edge 打开我的微信公众号文章，结果发现居然不给我选择文本？天理难容！然后又想起来每次上机房课的只能查得到 CSDN（别问，问就是不够时间翻别人的个人博客），这个崽种也不给我复制文章内容。所以，一气之下开始编写本脚本。
 * 中间尝试过把百度文库撕开，但是失败了，我的技术能力不足以支撑我对抗这种大公司。（悲
+---
+## 🎃  如果你想了解本脚本的运作逻辑图解可以点击👉[这里查看](https://github.com/MT-Y-TM/Fuck_All_Web_Restrictions/blob/77900f5f394dedaadf89e8fa8cbe782d06ff5681/Code_Explanation_Diagrams/Code_Explanation_Diagrams_Readme.md)
