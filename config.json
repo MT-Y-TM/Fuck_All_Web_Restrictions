@@ -307,6 +307,16 @@
           "domain": "^github\\.com$",
           "unlockOff": true,
           "comment": "禁用对 GitHub 的解除限制"
-        }
+        },
+          {
+    "domain": "www\\.miyoushe\\.com$", 
+    "unlockOff": true, 
+    "comment": "米游社主站禁用规则"
+  },
+  {
+    "domain": "act\\.mihoyo\\.com$", 
+    "unlockOff": true, 
+    "comment": "米哈游活动页禁用规则"
+  }
     ]
   }
