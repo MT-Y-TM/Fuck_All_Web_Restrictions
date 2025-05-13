@@ -1065,6 +1065,11 @@
             "unlockOverlayPro": false,
             "unlockOff": false,
             "comment": "bangumi 禁用规则"
+        },
+        {
+            "domain": "\\.hko\\.gov\\.hk$",
+            "unlockOff": true,
+            "comment": "香港天文台 禁用规则"
         }
     ]
 }
