@@ -377,624 +377,684 @@
             "comment": "星橙影视 禁用规则"
         },
         {
-            "domain": "//.senlin//.app$",
+            "domain": "\\.senlin\\.app$",
             "unlockOff": true,
             "comment": "影视森林 禁用规则"
         },
         {
-            "domain": "//.ihezu//.life$",
+            "domain": "\\.ihezu\\.life$",
             "unlockOff": true,
             "comment": "Netflix账号合租 禁用规则"
         },
         {
-            "domain": "//.3jihome//.com$",
+            "domain": "\\.3jihome\\.com$",
             "unlockOff": true,
             "comment": "三鸡之家 禁用规则"
         },
         {
-            "domain": "//.wwrl//.lanzouw//.com$",
+            "domain": "\\.wwrl\\.lanzouw\\.com$",
             "unlockOff": true,
             "comment": "黑猫影视 禁用规则"
         },
         {
-            "domain": "//.cilixiong//.net$",
+            "domain": "\\.cilixiong\\.net$",
             "unlockOff": true,
             "comment": "磁力熊 禁用规则"
         },
         {
-            "domain": "//.ddys//.pro$",
+            "domain": "\\.ddys\\.pro$",
             "unlockOff": true,
             "comment": "低端影视 禁用规则"
         },
         {
-            "domain": "//.zjxq//.cc$",
+            "domain": "\\.zjxq\\.cc$",
             "unlockOff": true,
             "comment": "追剧星球 禁用规则"
         },
         {
-            "domain": "//.novipnoad//.net$",
+            "domain": "\\.novipnoad\\.net$",
             "unlockOff": true,
             "comment": "NOVIPNOAD 禁用规则"
         },
         {
-            "domain": "//.hdmoli//.pro$",
+            "domain": "\\.hdmoli\\.pro$",
             "unlockOff": true,
             "comment": "HDmoli 禁用规则"
         },
         {
-            "domain": "//.auete//.pro$",
+            "domain": "\\.auete\\.pro$",
             "unlockOff": true,
             "comment": "Auete 禁用规则"
         },
         {
-            "domain": "//.libvio//.me$",
+            "domain": "\\.libvio\\.me$",
             "unlockOff": true,
             "comment": "Libvio 禁用规则"
         },
         {
-            "domain": "//.mgnacg//.com$",
+            "domain": "\\.mgnacg\\.com$",
             "unlockOff": true,
             "comment": "橘子动漫 禁用规则"
         },
         {
-            "domain": "//.zxzjhd//.com$",
+            "domain": "\\.zxzjhd\\.com$",
             "unlockOff": true,
             "comment": "在线之家 禁用规则"
         },
         {
-            "domain": "//.ikan6//.vip$",
+            "domain": "\\.ikan6\\.vip$",
             "unlockOff": true,
             "comment": "爱看影视 禁用规则"
         },
         {
-            "domain": "//.czzy88//.com$",
+            "domain": "\\.czzy88\\.com$",
             "unlockOff": true,
             "comment": "厂长资源 禁用规则"
         },
         {
-            "domain": "//.d1dm//.cc$",
+            "domain": "\\.d1dm\\.cc$",
             "unlockOff": true,
             "comment": "第一动漫 禁用规则"
         },
         {
-            "domain": "//.xlys01//.com$",
+            "domain": "\\.xlys01\\.com$",
             "unlockOff": true,
             "comment": "修罗影视 禁用规则"
         },
         {
-            "domain": "//.fanshudm//.com$",
+            "domain": "\\.fanshudm\\.com$",
             "unlockOff": true,
             "comment": "番薯动漫 禁用规则"
         },
         {
-            "domain": "//.bttwoo//.com$",
+            "domain": "\\.bttwoo\\.com$",
             "unlockOff": true,
             "comment": "两个BT 禁用规则"
         },
         {
-            "domain": "//.netflixgc//.com$",
+            "domain": "\\.netflixgc\\.com$",
             "unlockOff": true,
             "comment": "奈飞工厂 禁用规则"
         },
         {
-            "domain": "//.pipiys3//.com$",
+            "domain": "\\.pipiys3\\.com$",
             "unlockOff": true,
             "comment": "皮皮影视 禁用规则"
         },
         {
-            "domain": "//.cilixiong//.net$",
+            "domain": "\\.cilixiong\\.net$",
             "unlockOff": true,
             "comment": "磁力熊 禁用规则"
         },
         {
-            "domain": "//.ddys//.pro$",
+            "domain": "\\.ddys\\.pro$",
             "unlockOff": true,
             "comment": "低端影视 禁用规则"
         },
         {
-            "domain": "//.novipnoad//.net$",
+            "domain": "\\.novipnoad\\.net$",
             "unlockOff": true,
             "comment": "NOVIPNOAD 禁用规则"
         },
         {
-            "domain": "//.hdmoli//.pro$",
+            "domain": "\\.hdmoli\\.pro$",
             "unlockOff": true,
             "comment": "HDmoli 禁用规则"
         },
         {
-            "domain": "//.auete//.pro$",
+            "domain": "\\.auete\\.pro$",
             "unlockOff": true,
             "comment": "Auete 禁用规则"
         },
         {
-            "domain": "//.libvio//.me$",
+            "domain": "\\.libvio\\.me$",
             "unlockOff": true,
             "comment": "Libvio 禁用规则"
         },
         {
-            "domain": "//.zxzjhd//.com$",
+            "domain": "\\.zxzjhd\\.com$",
             "unlockOff": true,
             "comment": "在线之家 禁用规则"
         },
         {
-            "domain": "//.ikan6//.vip$",
+            "domain": "\\.ikan6\\.vip$",
             "unlockOff": true,
             "comment": "爱看影视 禁用规则"
         },
         {
-            "domain": "//.czzy88//.com$",
+            "domain": "\\.czzy88\\.com$",
             "unlockOff": true,
             "comment": "厂长资源 禁用规则"
         },
         {
-            "domain": "//.d1dm//.cc$",
+            "domain": "\\.d1dm\\.cc$",
             "unlockOff": true,
             "comment": "第一动漫 禁用规则"
         },
         {
-            "domain": "//.xlys01//.com$",
+            "domain": "\\.xlys01\\.com$",
             "unlockOff": true,
             "comment": "修罗影视 禁用规则"
         },
         {
-            "domain": "//.ihezu//.life$",
+            "domain": "\\.ihezu\\.life$",
             "unlockOff": true,
             "comment": "Netflix账号合租 禁用规则"
         },
         {
-            "domain": "//.dmxq//.fun$",
+            "domain": "\\.dmxq\\.fun$",
             "unlockOff": true,
             "comment": "大米星球 禁用规则"
         },
         {
-            "domain": "//.bdys10//.com$",
+            "domain": "\\.bdys10\\.com$",
             "unlockOff": true,
             "comment": "哔嘀影视 禁用规则"
         },
         {
-            "domain": "//.2yjw//.com$",
+            "domain": "\\.2yjw\\.com$",
             "unlockOff": true,
             "comment": "爱影视剧 禁用规则"
         },
         {
-            "domain": "//.555movie//.store$",
+            "domain": "\\.555movie\\.store$",
             "unlockOff": true,
             "comment": "555电影 禁用规则"
         },
         {
-            "domain": "//.chok8//.vip$",
+            "domain": "\\.chok8\\.vip$",
             "unlockOff": true,
             "comment": "Chok影院 禁用规则"
         },
         {
-            "domain": "//.zhuiju//.la$",
+            "domain": "\\.zhuiju\\.la$",
             "unlockOff": true,
             "comment": "追剧啦 禁用规则"
         },
         {
-            "domain": "//.jumi//.tv$",
+            "domain": "\\.jumi\\.tv$",
             "unlockOff": true,
             "comment": "剧迷TV 禁用规则"
         },
         {
-            "domain": "//.hdwatch//.tv$",
+            "domain": "\\.hdwatch\\.tv$",
             "unlockOff": true,
             "comment": "HDwatch 禁用规则"
         },
         {
-            "domain": "//.ww18//.soap2day//.day$",
+            "domain": "\\.ww18\\.soap2day\\.day$",
             "unlockOff": true,
             "comment": "Soap2day 禁用规则"
         },
         {
-            "domain": "//.cartoonntv2//.blogspot//.com$",
+            "domain": "\\.cartoonntv2\\.blogspot\\.com$",
             "unlockOff": true,
             "comment": "Cartoon Tv 禁用规则"
         },
         {
-            "domain": "//.bttwoo//.com$",
+            "domain": "\\.bttwoo\\.com$",
             "unlockOff": true,
             "comment": "两个BT 禁用规则"
         },
         {
-            "domain": "//.netflixgc//.com$",
+            "domain": "\\.netflixgc\\.com$",
             "unlockOff": true,
             "comment": "奈飞工厂 禁用规则"
         },
         {
-            "domain": "//.pipiys3//.com$",
+            "domain": "\\.pipiys3\\.com$",
             "unlockOff": true,
             "comment": "皮皮影视 禁用规则"
         },
         {
-            "domain": "//.wwrl//.lanzouw//.com$",
+            "domain": "\\.wwrl\\.lanzouw\\.com$",
             "unlockOff": true,
             "comment": "黑猫影视 禁用规则"
         },
         {
-            "domain": "//.zjxq//.cc$",
+            "domain": "\\.zjxq\\.cc$",
             "unlockOff": true,
             "comment": "追剧星球 禁用规则"
         },
         {
-            "domain": "//.senlin//.app$",
+            "domain": "\\.senlin\\.app$",
             "unlockOff": true,
             "comment": "影视森林 禁用规则"
         },
         {
-            "domain": "//.wwt//.lanzouw//.com$",
+            "domain": "\\.wwt\\.lanzouw\\.com$",
             "unlockOff": true,
             "comment": "影视森林 禁用规则"
         },
         {
-            "domain": "//.123pan//.com$",
+            "domain": "\\.123pan\\.com$",
             "unlockOff": true,
             "comment": "影视 禁用规则"
         },
         {
-            "domain": "//.123pan//.com$",
+            "domain": "\\.123pan\\.com$",
             "unlockOff": true,
             "comment": "Ok影视 禁用规则"
         },
         {
-            "domain": "//.dao-fire//.com$",
+            "domain": "\\.dao-fire\\.com$",
             "unlockOff": true,
             "comment": "影视森林 禁用规则"
         },
         {
-            "domain": "//.nmandy//.net$",
+            "domain": "\\.nmandy\\.net$",
             "unlockOff": true,
             "comment": "诺曼底论坛 禁用规则"
         },
         {
-            "domain": "//.zhys//.66rt//.com$",
+            "domain": "\\.zhys\\.66rt\\.com$",
             "unlockOff": true,
             "comment": "战火论坛 禁用规则"
         },
         {
-            "domain": "//.fanxinzhui//.com$",
+            "domain": "\\.fanxinzhui\\.com$",
             "unlockOff": true,
             "comment": "追新番 禁用规则"
         },
         {
-            "domain": "//.rijupao//.com$",
+            "domain": "\\.rijupao\\.com$",
             "unlockOff": true,
             "comment": "日剧跑 禁用规则"
         },
         {
-            "domain": "//.taijuzlg//.com$",
+            "domain": "\\.taijuzlg\\.com$",
             "unlockOff": true,
             "comment": "泰剧资料馆 禁用规则"
         },
         {
-            "domain": "//.doki8//.net$",
+            "domain": "\\.doki8\\.net$",
             "unlockOff": true,
             "comment": "心动日剧 禁用规则"
         },
         {
-            "domain": "//.oiabc//.net$",
+            "domain": "\\.oiabc\\.net$",
             "unlockOff": true,
             "comment": "我爱ABC 禁用规则"
         },
         {
-            "domain": "//.zhaifu//.co$",
+            "domain": "\\.zhaifu\\.co$",
             "unlockOff": true,
             "comment": "宅腐资源站 禁用规则"
         },
         {
-            "domain": "//.danmeizy//.com$",
+            "domain": "\\.danmeizy\\.com$",
             "unlockOff": true,
             "comment": "耽美资源网 禁用规则"
         },
         {
-            "domain": "//.zhaifujidi//.com$",
+            "domain": "\\.zhaifujidi\\.com$",
             "unlockOff": true,
             "comment": "腐宅基地 禁用规则"
         },
         {
-            "domain": "//.mgnacg//.com$",
+            "domain": "\\.mgnacg\\.com$",
             "unlockOff": true,
             "comment": "橘子动漫 禁用规则"
         },
         {
-            "domain": "//.anime//.girigirilove//.com$",
+            "domain": "\\.anime\\.girigirilove\\.com$",
             "unlockOff": true,
             "comment": "giri爱动漫 禁用规则"
         },
         {
-            "domain": "//.agedm//.org$",
+            "domain": "\\.agedm\\.org$",
             "unlockOff": true,
             "comment": "AGE动漫 禁用规则"
         },
         {
-            "domain": "//.fanshudm//.com$",
+            "domain": "\\.fanshudm\\.com$",
             "unlockOff": true,
             "comment": "番薯动漫 禁用规则"
         },
         {
-            "domain": "//.huazidm//.com$",
+            "domain": "\\.huazidm\\.com$",
             "unlockOff": true,
             "comment": "花子动漫 禁用规则"
         },
         {
-            "domain": "//.catw//.moe$",
+            "domain": "\\.catw\\.moe$",
             "unlockOff": true,
             "comment": "喵物次元 禁用规则"
         },
         {
-            "domain": "//.mutedm//.com$",
+            "domain": "\\.mutedm\\.com$",
             "unlockOff": true,
             "comment": "MuteFun动漫 禁用规则"
         },
         {
-            "domain": "//.gxdm01//.org$",
+            "domain": "\\.gxdm01\\.org$",
             "unlockOff": true,
             "comment": "宫下动漫 禁用规则"
         },
         {
-            "domain": "//.dick//.xfani//.com$",
+            "domain": "\\.dick\\.xfani\\.com$",
             "unlockOff": true,
             "comment": "稀饭动漫 禁用规则"
         },
         {
-            "domain": "//.invbo//.top$",
+            "domain": "\\.invbo\\.top$",
             "unlockOff": true,
             "comment": "不可视境界线 禁用规则"
         },
         {
-            "domain": "//.dytt8//.com$",
+            "domain": "\\.dytt8\\.com$",
             "unlockOff": true,
             "comment": "电影天堂 禁用规则"
         },
         {
-            "domain": "//.6v520//.com$",
+            "domain": "\\.6v520\\.com$",
             "unlockOff": true,
             "comment": "6V电影 禁用规则"
         },
         {
-            "domain": "//.piaohua//.com$",
+            "domain": "\\.piaohua\\.com$",
             "unlockOff": true,
             "comment": "飘花电影 禁用规则"
         },
         {
-            "domain": "//.yinfans//.me$",
+            "domain": "\\.yinfans\\.me$",
             "unlockOff": true,
             "comment": "音范丝 禁用规则"
         },
         {
-            "domain": "//.mikanani//.me$",
+            "domain": "\\.mikanani\\.me$",
             "unlockOff": true,
             "comment": "蜜柑计划 禁用规则"
         },
         {
-            "domain": "//.yyets//.click$",
+            "domain": "\\.yyets\\.click$",
             "unlockOff": true,
             "comment": "人人影视分享站 禁用规则"
         },
         {
-            "domain": "//.tokyotosho//.info$",
+            "domain": "\\.tokyotosho\\.info$",
             "unlockOff": true,
             "comment": "东京图书馆 禁用规则"
         },
         {
-            "domain": "//.comicat//.org$",
+            "domain": "\\.comicat\\.org$",
             "unlockOff": true,
             "comment": "漫猫动漫 禁用规则"
         },
         {
-            "domain": "//.btdx8//.vip$",
+            "domain": "\\.btdx8\\.vip$",
             "unlockOff": true,
             "comment": "比特大雄 禁用规则"
         },
         {
-            "domain": "//.bt-tt//.com$",
+            "domain": "\\.bt-tt\\.com$",
             "unlockOff": true,
             "comment": "BT天堂 禁用规则"
         },
         {
-            "domain": "//.yikedy//.cc$",
+            "domain": "\\.yikedy\\.cc$",
             "unlockOff": true,
             "comment": "一刻电影 禁用规则"
         },
         {
-            "domain": "//.torrentgalaxy//.to$",
+            "domain": "\\.torrentgalaxy\\.to$",
             "unlockOff": true,
             "comment": "Torrent Galaxy 禁用规则"
         },
         {
-            "domain": "//.share//.dmhy//.org$",
+            "domain": "\\.share\\.dmhy\\.org$",
             "unlockOff": true,
             "comment": "动漫花园 禁用规则"
         },
         {
-            "domain": "//.yts//.mx$",
+            "domain": "\\.yts\\.mx$",
             "unlockOff": true,
             "comment": "YTS 禁用规则"
         },
         {
-            "domain": "//.eztvx//.to$",
+            "domain": "\\.eztvx\\.to$",
             "unlockOff": true,
             "comment": "EZTV 禁用规则"
         },
         {
-            "domain": "//.piratebayproxy//.info$",
+            "domain": "\\.piratebayproxy\\.info$",
             "unlockOff": true,
             "comment": "海盗湾 禁用规则"
         },
         {
-            "domain": "//.1337x//.proxyninja//.org$",
+            "domain": "\\.1337x\\.proxyninja\\.org$",
             "unlockOff": true,
             "comment": "1337X 禁用规则"
         },
         {
-            "domain": "//.1lou//.pro$",
+            "domain": "\\.1lou\\.pro$",
             "unlockOff": true,
             "comment": "BT之家 禁用规则"
         },
         {
-            "domain": "//.torrentfunk//.proxyninja//.org$",
+            "domain": "\\.torrentfunk\\.proxyninja\\.org$",
             "unlockOff": true,
             "comment": "Torrent Funk 禁用规则"
         },
         {
-            "domain": "//.rutracker//.net$",
+            "domain": "\\.rutracker\\.net$",
             "unlockOff": true,
             "comment": "Rutracker 禁用规则"
         },
         {
-            "domain": "//.kickasss//.to$",
+            "domain": "\\.kickasss\\.to$",
             "unlockOff": true,
             "comment": "Kickass 禁用规则"
         },
         {
-            "domain": "//.nyaa//.si$",
+            "domain": "\\.nyaa\\.si$",
             "unlockOff": true,
             "comment": "Nyaa 禁用规则"
         },
         {
-            "domain": "//.t-rex//.tzfile//.com$",
+            "domain": "\\.t-rex\\.tzfile\\.com$",
             "unlockOff": true,
             "comment": "团长资源 禁用规则"
         },
         {
-            "domain": "//.xinjufang//.com$",
+            "domain": "\\.xinjufang\\.com$",
             "unlockOff": true,
             "comment": "新剧坊 禁用规则"
         },
         {
-            "domain": "//.rrdynb//.com$",
+            "domain": "\\.rrdynb\\.com$",
             "unlockOff": true,
             "comment": "人人电影网 禁用规则"
         },
         {
-            "domain": "//.yunpan1//.cc$",
+            "domain": "\\.yunpan1\\.cc$",
             "unlockOff": true,
             "comment": "云盘资源分享 禁用规则"
         },
         {
-            "domain": "//.wogg//.xyz$",
+            "domain": "\\.wogg\\.xyz$",
             "unlockOff": true,
             "comment": "玩偶哥哥 禁用规则"
         },
         {
-            "domain": "//.repanso//.com$",
+            "domain": "\\.repanso\\.com$",
             "unlockOff": true,
             "comment": "热盘搜 禁用规则"
         },
         {
-            "domain": "//.aipanso//.com$",
+            "domain": "\\.aipanso\\.com$",
             "unlockOff": true,
             "comment": "爱盘搜 禁用规则"
         },
         {
-            "domain": "//.xiongdipan//.com$",
+            "domain": "\\.xiongdipan\\.com$",
             "unlockOff": true,
             "comment": "兄弟盘 禁用规则"
         },
         {
-            "domain": "//.susuifa//.com$",
+            "domain": "\\.susuifa\\.com$",
             "unlockOff": true,
             "comment": "苏苏影视分享 禁用规则"
         },
         {
-            "domain": "//.panmeme//.com$",
+            "domain": "\\.panmeme\\.com$",
             "unlockOff": true,
             "comment": "盘么么 禁用规则"
         },
         {
-            "domain": "//.subhd//.tv$",
+            "domain": "\\.subhd\\.tv$",
             "unlockOff": true,
             "comment": "SubHD 禁用规则"
         },
         {
-            "domain": "//.zmk//.pw$",
+            "domain": "\\.zmk\\.pw$",
             "unlockOff": true,
             "comment": "字幕库 禁用规则"
         },
         {
-            "domain": "//.yysub//.net$",
+            "domain": "\\.yysub\\.net$",
             "unlockOff": true,
             "comment": "YYeTs人人影视 禁用规则"
         },
         {
-            "domain": "//.subscene//.com$",
+            "domain": "\\.subscene\\.com$",
             "unlockOff": true,
             "comment": "Subscene 禁用规则"
         },
         {
-            "domain": "//.tnhzmz//.com$",
+            "domain": "\\.tnhzmz\\.com$",
             "unlockOff": true,
             "comment": "东京不够热 禁用规则"
         },
         {
-            "domain": "//.icezmz//.com$",
+            "domain": "\\.icezmz\\.com$",
             "unlockOff": true,
             "comment": "冰冰字幕组 禁用规则"
         },
         {
-            "domain": "//.sybbs//.vip$",
+            "domain": "\\.sybbs\\.vip$",
             "unlockOff": true,
             "comment": "深影字幕组 禁用规则"
         },
         {
-            "domain": "//.ywtrzmz//.net$",
+            "domain": "\\.ywtrzmz\\.net$",
             "unlockOff": true,
             "comment": "亿万同人字幕组 禁用规则"
         },
         {
-            "domain": "//.wanwansub//.com$",
+            "domain": "\\.wanwansub\\.com$",
             "unlockOff": true,
             "comment": "弯弯字幕组 禁用规则"
         },
         {
-            "domain": "//.zimuxia//.cn$",
+            "domain": "\\.zimuxia\\.cn$",
             "unlockOff": true,
             "comment": "FIX字幕侠 禁用规则"
         },
         {
-            "domain": "//.mytvbt//.net$",
+            "domain": "\\.mytvbt\\.net$",
             "unlockOff": true,
             "comment": "日菁字幕组 禁用规则"
         },
         {
-            "domain": "//.nzmz//.xyz$",
+            "domain": "\\.nzmz\\.xyz$",
             "unlockOff": true,
             "comment": "NEW字幕组 禁用规则"
         },
         {
-            "domain": "//.treehousesub//.com$",
+            "domain": "\\.treehousesub\\.com$",
             "unlockOff": true,
             "comment": "树屋字幕组 禁用规则"
         },
         {
-            "domain": "//.shenbibi//.com$",
+            "domain": "\\.shenbibi\\.com$",
             "unlockOff": true,
             "comment": "神叨字幕组 禁用规则"
         },
         {
-            "domain": "//.shenbibi//.com$",
+            "domain": "\\.shenbibi\\.com$",
             "unlockOff": true,
             "comment": "点点字幕 禁用规则"
         },
         {
-            "domain": "//.mcar//.vip$",
+            "domain": "\\.mcar\\.vip$",
             "unlockOff": true,
             "comment": "耐卡字幕组 禁用规则"
         },
         {
-            "domain": "//.3jihome//.com$",
+            "domain": "\\.3jihome\\.com$",
             "unlockOff": true,
             "comment": "三鸡之家 禁用规则"
         },
         {
-            "domain": "//.695402//.xyz$",
+            "domain": "\\.695402\\.xyz$",
             "unlockOff": true,
             "comment": "美团图床 禁用规则"
         },
         {
-            "domain": "//.mjj//.today$",
+            "domain": "\\.mjj\\.today$",
             "unlockOff": true,
             "comment": "MJJ图床 禁用规则"
+        },
+        {
+            "domain": "\\.widiz\\.com$",
+            "unlockOff": true,
+            "comment": "豆花影视 禁用规则"
+        },
+        {
+            "domain": "\\.mwcy\\.net$",
+            "unlockOff": true,
+            "comment": "喵呜次元 禁用规则"
+        },
+        {
+            "domain": ".*asmr.*",
+            "unlockOff": true,
+            "comment": "asmr 禁用规则"
+        },
+        {
+            "domain": "music\\.163\\.com$",
+            "unlockOff": true,
+            "comment": "网易云音乐 禁用规则"
+        },
+        {
+            "domain": "\\.y\\.qq\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false,
+            "comment": "腾讯音乐 禁用规则"
+        },
+        {
+            "domain": "music\\.apple\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false,
+            "comment": "苹果音乐 禁用规则"
+        },
+        {
+            "domain": "music\\.taihe\\.com$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false,
+            "comment": "千千音乐 禁用规则"
+        },
+        {
+            "domain": "music\\.migu\\.cn$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false,
+            "comment": "咪咕音乐 禁用规则"
         }
     ]
 }
