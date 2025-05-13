@@ -1055,6 +1055,16 @@
             "unlockOverlayPro": false,
             "unlockOff": false,
             "comment": "咪咕音乐 禁用规则"
+        },
+        {
+            "domain": "bangumi\\.tv$",
+            "unlockSelect": false,
+            "unlockCopy": true,
+            "unlockContext": false,
+            "unlockOverlay": false,
+            "unlockOverlayPro": false,
+            "unlockOff": false,
+            "comment": "bangumi 禁用规则"
         }
     ]
 }
