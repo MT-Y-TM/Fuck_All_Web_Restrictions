@@ -1075,6 +1075,11 @@
             "domain": "platform\\.deepseek\\.com$",
             "unlockOff": true,
             "comment": "DeepSeek 禁用规则"
+        },
+        {
+            "domain": "bailian\\.console\\.aliyun\\.com$",
+            "unlockOff": true,
+            "comment": "百炼控制台 禁用规则"
         }
     ]
 }
