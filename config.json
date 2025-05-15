@@ -1070,6 +1070,11 @@
             "domain": "\\.hko\\.gov\\.hk$",
             "unlockOff": true,
             "comment": "香港天文台 禁用规则"
+        },
+        {
+            "domain": "platform\\.deepseek\\.com$",
+            "unlockOff": true,
+            "comment": "DeepSeek 禁用规则"
         }
     ]
 }
