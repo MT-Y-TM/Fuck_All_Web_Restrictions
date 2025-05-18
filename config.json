@@ -1090,6 +1090,11 @@
             "domain": "x\\.dg6\\.im$",
             "unlockOff": true,
             "comment": "狗狗加速机场 禁用规则"
+        },
+        {
+            "domain": "pixiv\\.net$",
+            "unlockOff": true,
+            "comment": "P站 Pixiv 禁用规则"
         }
     ]
 }
