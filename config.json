@@ -1080,6 +1080,16 @@
             "domain": "bailian\\.console\\.aliyun\\.com$",
             "unlockOff": true,
             "comment": "百炼控制台 禁用规则"
+        },
+        {
+            "domain": "developer\\.android\\.com$",
+            "unlockOff": true,
+            "comment": "安卓开发者平台 禁用规则"
+        },
+        {
+            "domain": "x\\.dg6\\.im$",
+            "unlockOff": true,
+            "comment": "狗狗加速机场 禁用规则"
         }
     ]
 }
