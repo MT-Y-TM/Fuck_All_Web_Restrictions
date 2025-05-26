@@ -308,6 +308,10 @@
             "unlockOff": true
         },
         {
+            "domain": "claude\\.ai$",
+            "unlockOff": true
+        },
+        {
             "domain": "\\.perplexity\\.ai$",
             "unlockOff": true
         },
