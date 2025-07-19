@@ -1099,6 +1099,11 @@
             "domain": "pixiv\\.net$",
             "unlockOff": true,
             "comment": "P站 Pixiv 禁用规则"
+        },
+        {
+            "domain": "ys\\.mihoyo\\.com$",
+            "unlockOff": true,
+            "comment": "原神官网v 禁用规则"
         }
     ]
 }
